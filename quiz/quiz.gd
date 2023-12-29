@@ -18,4 +18,10 @@ func _on_flag_button_pressed():
 func _on_flag_button_2_pressed():
 	$AudioNo.play()
 	await $AudioNo.finished
+	$AudioFlag2.play()
+	await $AudioFlag2.finished
+	$AudioIsNot.play()
+	await $AudioIsNot.finished
+	$AudioFlag.play()
+	await $AudioFlag.finished
 	ask_question()
