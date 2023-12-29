@@ -1,3 +1,52 @@
-[gd_scene format=3 uid="uid://xjxa57oeener"]
+[gd_scene load_steps=8 format=3 uid="uid://xjxa57oeener"]
+
+[ext_resource type="PackedScene" uid="uid://gbpfsjlllrli" path="res://quiz/flag_button.tscn" id="1_8b3nn"]
+[ext_resource type="Script" path="res://quiz/quiz.gd" id="1_dqiql"]
+[ext_resource type="Texture2D" uid="uid://cj3poy65jpqm6" path="res://flags/japan.png" id="2_egm15"]
+[ext_resource type="AudioStream" uid="uid://belkpalw62877" path="res://quiz/audio/akiraqualbandeira.ogg" id="3_c08dy"]
+[ext_resource type="AudioStream" path="res://quiz/audio/akirabrasil.ogg" id="5_7hiv3"]
+[ext_resource type="AudioStream" uid="uid://icbq07jsthcn" path="res://quiz/audio/akirayes.ogg" id="6_isa58"]
+[ext_resource type="AudioStream" uid="uid://dkkj27wgs8mwj" path="res://quiz/audio/akirano.ogg" id="7_t35jc"]
 
 [node name="Quiz" type="Node2D"]
+script = ExtResource("1_dqiql")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Qual é a bandeira?"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Brasil"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="FlagButton" parent="VBoxContainer/GridContainer" instance=ExtResource("1_8b3nn")]
+layout_mode = 2
+
+[node name="FlagButton2" parent="VBoxContainer/GridContainer" instance=ExtResource("1_8b3nn")]
+layout_mode = 2
+icon = ExtResource("2_egm15")
+
+[node name="AudioQuestion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c08dy")
+
+[node name="AudioFlag" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7hiv3")
+
+[node name="AudioYes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_isa58")
+
+[node name="AudioNo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_t35jc")
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/FlagButton" to="." method="_on_flag_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/FlagButton2" to="." method="_on_flag_button_2_pressed"]
