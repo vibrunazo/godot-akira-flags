@@ -114,3 +114,9 @@ func animate_control(label: Control):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(label, "scale", Vector2(1.0, 1.0), 0.6)
+
+## Pressed the button to ask the question again
+func _on_ask_button_pressed():
+	if not is_ready: return
+	stop_audio()
+	ask_question()

@@ -39,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/VBoxContainer/rootAnswer/LabelAnswer:scale")
+tracks/1/path = NodePath("HBoxContainer/AskButton/VBoxContainer/rootAnswer/LabelAnswer:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +54,7 @@ resource_name = "ask"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/VBoxContainer/rootAnswer/LabelAnswer:scale")
+tracks/0/path = NodePath("HBoxContainer/AskButton/VBoxContainer/rootAnswer/LabelAnswer:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,15 +104,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="AskButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(800, 400)
 layout_mode = 2
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/AskButton"]
+layout_mode = 2
+offset_right = 800.0
+offset_bottom = 816.0
+mouse_filter = 2
 alignment = 1
 
-[node name="rootAsk" type="Control" parent="HBoxContainer/VBoxContainer"]
+[node name="rootAsk" type="Control" parent="HBoxContainer/AskButton/VBoxContainer"]
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="LabelAsk" type="Label" parent="HBoxContainer/VBoxContainer/rootAsk"]
+[node name="LabelAsk" type="Label" parent="HBoxContainer/AskButton/VBoxContainer/rootAsk"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -130,11 +139,12 @@ theme_override_font_sizes/font_size = 80
 text = "Qual é a bandeira?"
 horizontal_alignment = 1
 
-[node name="rootAnswer" type="Control" parent="HBoxContainer/VBoxContainer"]
+[node name="rootAnswer" type="Control" parent="HBoxContainer/AskButton/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="LabelAnswer" type="Label" parent="HBoxContainer/VBoxContainer/rootAnswer"]
+[node name="LabelAnswer" type="Label" parent="HBoxContainer/AskButton/VBoxContainer/rootAnswer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(800, 100)
 layout_mode = 1
@@ -205,3 +215,5 @@ libraries = {
 "": SubResource("AnimationLibrary_1jl5v")
 }
 autoplay = "start"
+
+[connection signal="pressed" from="HBoxContainer/AskButton" to="." method="_on_ask_button_pressed"]
