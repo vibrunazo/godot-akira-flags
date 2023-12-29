@@ -16,6 +16,8 @@ extends Node2D
 ## id of the correct answer
 var answer: CountryData
 
+var is_ready := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	build_grid()
@@ -58,6 +60,9 @@ func _on_flag_pressed(button: FlagButton):
 
 func play_correct():
 	audio_yes.play()
+	await audio_yes.finished
+	await get_tree().create_timer(0.7).timeout
+	get_tree().change_scene_to_file("res://quiz/quiz.tscn")
 
 
 func play_wrong():
