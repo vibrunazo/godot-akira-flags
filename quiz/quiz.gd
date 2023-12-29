@@ -27,6 +27,7 @@ func _ready():
 	await get_tree().create_timer(0.6).timeout
 	ask_question()
 
+## Builds the grid with random options and picks a random answer
 func build_grid():
 	var candidates := Countries.ids.duplicate()
 	candidates.shuffle()
@@ -43,17 +44,15 @@ func build_grid():
 		grid.add_child(button)
 	answer = options.pick_random()
 	
-
+## Updates the UI with text from the quiz
 func update_ui():
 	if not answer: 
 		printerr('null answer')
 		return
 	label_answer.text = answer.display_name
 	audio_answer.stream = Countries.get_audio(answer.id)
-	#label_ask.scale = Vector2(0.8, 0.8)
-	#label_answer.scale = Vector2(0.8, 0.8)
 
-
+## Plays the audio and anim to ask the quiz question
 func ask_question():
 	animate_control(label_ask)
 	audio_question.play()
@@ -64,26 +63,35 @@ func ask_question():
 	await audio_answer.finished
 	is_ready = true
 
+## A flag button option was pressed
 func _on_flag_pressed(button: FlagButton):
 	if not is_ready: return
-	is_ready = false
 	print('pressed %s, answer: %s' % [button.country_id, answer.id])
 	animate_control(button)
 	audio_pressed.stream = Countries.get_audio(button.country_id)
+	stop_audio()
 	if button.country_id == answer.id:
 		play_correct()
 	else:
 		play_wrong()
-	
 
+## Stops all audio from playing so I can play new ones without speaking over others
+func stop_audio():
+	audio_answer.stop()
+	audio_no.stop()
+	audio_pressed.stop()
+	audio_isnot.stop()
+
+## Plays audio and anim for choosing the correct anwer
 func play_correct():
+	is_ready = false
 	audio_yes.play()
 	await audio_yes.finished
 	anim.play('end')
 	await get_tree().create_timer(0.7).timeout
 	get_tree().change_scene_to_file("res://quiz/quiz.tscn")
 
-
+## Plays audio and anim for picking a wrong option
 func play_wrong():
 	audio_no.play()
 	await audio_no.finished
@@ -94,7 +102,8 @@ func play_wrong():
 	audio_answer.play()
 	await audio_answer.finished
 	ask_question()
-	
+
+## Plays a bouncing wiggle anim on a given control. Will return to 1,1 scale once finished.
 func animate_control(label: Control):
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
