@@ -1,11 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://gbpfsjlllrli"]
+[gd_scene load_steps=3 format=3 uid="uid://gbpfsjlllrli"]
 
+[ext_resource type="Texture2D" uid="uid://d3sj0a0hks4my" path="res://countries/flags/brazil.png" id="1_3cv7s"]
 [ext_resource type="Script" path="res://quiz/flag_button.gd" id="2_so8wy"]
 
 [node name="FlagButton" type="Button"]
-custom_minimum_size = Vector2(200, 200)
-offset_right = 8.0
-offset_bottom = 8.0
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 200)
+icon = ExtResource("1_3cv7s")
 expand_icon = true
 script = ExtResource("2_so8wy")
 
