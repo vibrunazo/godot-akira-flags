@@ -4,6 +4,8 @@ extends CanvasLayer
 @export var options: Array[CountryData]
 ## Number of options per quiz
 @export var max_options: int = 4
+## The fx to instantiate and play when a correct answer is picked
+@export var yes_fx: PackedScene
 
 @onready var grid: GridContainer = %GridContainer
 @onready var label_ask: Label = %LabelAsk
@@ -71,7 +73,7 @@ func _on_flag_pressed(button: FlagButton):
 	audio_pressed.stream = Countries.get_audio(button.country_id)
 	stop_audio()
 	if button.country_id == answer.id:
-		play_correct()
+		play_correct(button.global_position + button.pivot_offset)
 	else:
 		play_wrong()
 
@@ -83,13 +85,19 @@ func stop_audio():
 	audio_isnot.stop()
 
 ## Plays audio and anim for choosing the correct anwer
-func play_correct():
+func play_correct(pos: Vector2):
 	is_ready = false
+	spawn_yes_fx(pos)
 	audio_yes.play()
 	await audio_yes.finished
 	anim.play('end')
 	await get_tree().create_timer(0.7).timeout
 	get_tree().change_scene_to_file("res://quiz/quiz.tscn")
+
+func spawn_yes_fx(pos: Vector2):
+	var fx = yes_fx.instantiate()
+	fx.global_position = pos
+	add_child(fx)
 
 ## Plays audio and anim for picking a wrong option
 func play_wrong():

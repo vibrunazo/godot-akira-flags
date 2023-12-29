@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://bggqg8wbu3gsu"]
+
+[ext_resource type="AudioStream" uid="uid://c7ofes65bfeys" path="res://ui/audio/Cymatics - Collectibles Classic FX 4.ogg" id="1_fd4j8"]
+[ext_resource type="Texture2D" uid="uid://5fvkfbgi1rka" path="res://fx/glow01.png" id="2_313ne"]
+
+[sub_resource type="Curve" id="Curve_exifu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48, 1), 0.0, 0.0, 0, 0, Vector2(0.986667, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2id3g"]
+curve = SubResource("Curve_exifu")
+
+[sub_resource type="Gradient" id="Gradient_wru0t"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.377049, 0.713115)
+colors = PackedColorArray(1, 0.992157, 0.231373, 1, 0.152941, 0.619608, 0.0156863, 1, 0.231373, 0.521569, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s0ffl"]
+gradient = SubResource("Gradient_wru0t")
+
+[sub_resource type="Curve" id="Curve_dk2tx"]
+_data = [Vector2(0, 0.593407), 0.0, 3.2967, 0, 0, Vector2(0.253333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.604396), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_76ogb"]
+curve = SubResource("Curve_dk2tx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qnki1"]
+lifetime_randomness = 0.84
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -100.0
+linear_accel_max = -50.0
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_76ogb")
+color = Color(1, 0.956863, 0.831373, 1)
+color_initial_ramp = SubResource("GradientTexture1D_s0ffl")
+alpha_curve = SubResource("CurveTexture_2id3g")
+
+[node name="YesFX" type="Node2D"]
+
+[node name="AudioYesFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("1_fd4j8")
+autoplay = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_qnki1")
+texture = ExtResource("2_313ne")
+lifetime = 3.0
+explosiveness = 0.9
+randomness = 0.51

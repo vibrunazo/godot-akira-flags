@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://xjxa57oeener"]
+[gd_scene load_steps=13 format=3 uid="uid://xjxa57oeener"]
 
 [ext_resource type="PackedScene" uid="uid://gbpfsjlllrli" path="res://quiz/flag_button.tscn" id="1_8b3nn"]
 [ext_resource type="Script" path="res://quiz/quiz.gd" id="1_dqiql"]
+[ext_resource type="PackedScene" uid="uid://bggqg8wbu3gsu" path="res://fx/yes_fx.tscn" id="2_lchvv"]
 [ext_resource type="AudioStream" uid="uid://belkpalw62877" path="res://quiz/audio/akiraqualbandeira.ogg" id="3_c08dy"]
 [ext_resource type="AudioStream" uid="uid://icbq07jsthcn" path="res://quiz/audio/akirayes.ogg" id="6_isa58"]
 [ext_resource type="AudioStream" uid="uid://dkkj27wgs8mwj" path="res://quiz/audio/akirano.ogg" id="7_t35jc"]
@@ -89,6 +90,7 @@ _data = {
 
 [node name="Quiz" type="CanvasLayer"]
 script = ExtResource("1_dqiql")
+yes_fx = ExtResource("2_lchvv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 8
