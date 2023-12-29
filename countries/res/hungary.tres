@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CountryData" load_steps=2 format=3 uid="uid://croi5t6mqt7ug"]
+
+[ext_resource type="Script" path="res://countries/country_data.gd" id="1_j4fom"]
+
+[resource]
+script = ExtResource("1_j4fom")
+id = "hungary"
+display_name = "Hungria"

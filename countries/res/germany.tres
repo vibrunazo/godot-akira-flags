@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CountryData" load_steps=2 format=3 uid="uid://ysewhcdo7hbc"]
+
+[ext_resource type="Script" path="res://countries/country_data.gd" id="1_kkosn"]
+
+[resource]
+script = ExtResource("1_kkosn")
+id = "germany"
+display_name = "Alemanha"

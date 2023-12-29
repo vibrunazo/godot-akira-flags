@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CountryData" load_steps=2 format=3 uid="uid://doy1imv5tneh2"]
+
+[ext_resource type="Script" path="res://countries/country_data.gd" id="1_v7ad1"]
+
+[resource]
+script = ExtResource("1_v7ad1")
+id = "southkorea"
+display_name = "Coréia do Sul"

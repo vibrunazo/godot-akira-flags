@@ -3,7 +3,7 @@ extends Node2D
 ## List of countries that will show up as options in the quiz
 @export var options: Array[CountryData]
 ## Number of options per quiz
-@export var max_options: int = 2
+@export var max_options: int = 4
 
 @onready var grid: GridContainer = %GridContainer
 @onready var label_answer: Label = %LabelAnswer
@@ -38,6 +38,7 @@ func build_grid():
 	
 
 func update_ui():
+	if not answer: return
 	label_answer.text = answer.display_name
 	audio_answer.stream = Countries.get_audio(answer.id)
 

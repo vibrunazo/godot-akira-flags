@@ -4,8 +4,20 @@ class_name Countries
 
 ## list of all country ids
 static var ids = [
+	'argentina',
+	'belgium',
 	'brazil',
+	'canada',
+	'france',
+	'germany',
+	'hungary',
+	'israel',
+	'italy',
 	'japan',
+	'lebanon',
+	'poland',
+	'southkorea',
+	'us',
 ]
 
 ## Returns the Texture2D for the flag of a given country id. Null if not found.
