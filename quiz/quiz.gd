@@ -27,8 +27,8 @@ func _ready():
 func build_grid():
 	var candidates := Countries.ids.duplicate()
 	candidates.shuffle()
+	options = []
 	for i in range(max_options):
-		print('i: %s' % i)
 		var id: String = candidates.pop_back()
 		var data: CountryData = Countries.get_data(id)
 		options.append(data)
@@ -40,7 +40,9 @@ func build_grid():
 	
 
 func update_ui():
-	if not answer: return
+	if not answer: 
+		printerr('null answer')
+		return
 	label_answer.text = answer.display_name
 	audio_answer.stream = Countries.get_audio(answer.id)
 
@@ -49,14 +51,19 @@ func ask_question():
 	audio_question.play()
 	await audio_question.finished
 	audio_answer.play()
+	await audio_answer.finished
+	is_ready = true
 
 func _on_flag_pressed(button: FlagButton):
-	print('pressed %s answer: %s' % [button.country_id, answer.id])
+	if not is_ready: return
+	is_ready = false
+	print('pressed %s, answer: %s' % [button.country_id, answer.id])
 	audio_pressed.stream = Countries.get_audio(button.country_id)
 	if button.country_id == answer.id:
 		play_correct()
 	else:
 		play_wrong()
+	
 
 func play_correct():
 	audio_yes.play()
