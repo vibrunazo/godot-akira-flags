@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3sj0a0hks4my"
-path="res://.godot/imported/brazil.png-06aca8934689771b211a46826188f189.ctex"
+uid="uid://cj3poy65jpqm6"
+path="res://.godot/imported/japan.png-a1bd181846d5aa7c04d9b4c180a70280.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flags/brazil.png"
-dest_files=["res://.godot/imported/brazil.png-06aca8934689771b211a46826188f189.ctex"]
+source_file="res://countries/flags/japan.png"
+dest_files=["res://.godot/imported/japan.png-a1bd181846d5aa7c04d9b4c180a70280.ctex"]
 
 [params]
 
