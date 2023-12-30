@@ -9,4 +9,4 @@ func _ready():
 	icon = Countries.get_flag(country_id)
 
 func _on_pressed():
-	pass # Replace with function body.
+	$AudioClick.play()

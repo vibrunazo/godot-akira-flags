@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xjxa57oeener"]
+[gd_scene load_steps=16 format=3 uid="uid://xjxa57oeener"]
 
 [ext_resource type="PackedScene" uid="uid://gbpfsjlllrli" path="res://quiz/flag_button.tscn" id="1_8b3nn"]
 [ext_resource type="Script" path="res://quiz/quiz.gd" id="1_dqiql"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://belkpalw62877" path="res://quiz/audio/akiraqualbandeira.ogg" id="3_c08dy"]
 [ext_resource type="AudioStream" uid="uid://icbq07jsthcn" path="res://quiz/audio/akirayes.ogg" id="6_isa58"]
 [ext_resource type="AudioStream" uid="uid://dkkj27wgs8mwj" path="res://quiz/audio/akirano.ogg" id="7_t35jc"]
+[ext_resource type="AudioStream" uid="uid://bhsorg3wxb5nd" path="res://ui/audio/zapThreeToneDown.ogg" id="7_tx6e5"]
 [ext_resource type="AudioStream" uid="uid://b161c15hqsejg" path="res://quiz/audio/akiranaoe.ogg" id="9_t00g2"]
 
 [sub_resource type="Animation" id="Animation_un0qu"]
@@ -49,6 +50,54 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioNo2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainer:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.886275, 0.137255, 0.0431373, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ayhcw"]
 resource_name = "ask"
@@ -80,12 +129,95 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_7qika"]
+resource_name = "fail"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.466667), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioNo2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.1, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.0872665, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.886275, 0.137255, 0.0431373, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aat5p"]
+resource_name = "yes"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.94902, 0.87451, 0.0470588, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.258824), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jl5v"]
 _data = {
 "RESET": SubResource("Animation_6rnbk"),
 "ask": SubResource("Animation_ayhcw"),
 "end": SubResource("Animation_f0i2j"),
-"start": SubResource("Animation_un0qu")
+"fail": SubResource("Animation_7qika"),
+"start": SubResource("Animation_un0qu"),
+"yes": SubResource("Animation_aat5p")
 }
 
 [node name="Quiz" type="CanvasLayer"]
@@ -98,12 +230,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -763.5
-offset_top = -402.0
-offset_right = 763.5
-offset_bottom = 402.0
+offset_left = -840.0
+offset_top = -408.0
+offset_right = 840.0
+offset_bottom = 408.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(840, 408)
 theme_override_constants/separation = 64
 
 [node name="AskButton" type="Button" parent="HBoxContainer"]
@@ -206,6 +339,12 @@ stream = ExtResource("6_isa58")
 [node name="AudioNo" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_t35jc")
+max_polyphony = 5
+
+[node name="AudioNo2" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_tx6e5")
+max_polyphony = 5
 
 [node name="AudioIsNot" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -217,5 +356,12 @@ libraries = {
 "": SubResource("AnimationLibrary_1jl5v")
 }
 autoplay = "start"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1915.0
+offset_bottom = 1077.0
+mouse_filter = 2
+color = Color(0.886275, 0.137255, 0.0431373, 1)
 
 [connection signal="pressed" from="HBoxContainer/AskButton" to="." method="_on_ask_button_pressed"]

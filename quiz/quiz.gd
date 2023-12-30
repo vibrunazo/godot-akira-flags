@@ -7,6 +7,7 @@ extends CanvasLayer
 ## The fx to instantiate and play when a correct answer is picked
 @export var yes_fx: PackedScene
 
+@onready var root: Control = $HBoxContainer
 @onready var grid: GridContainer = %GridContainer
 @onready var label_ask: Label = %LabelAsk
 @onready var label_answer: Label = %LabelAnswer
@@ -56,13 +57,15 @@ func update_ui():
 
 ## Plays the audio and anim to ask the quiz question
 func ask_question():
+	#is_ready = false
 	animate_control(label_ask)
 	audio_question.play()
 	await audio_question.finished
 	audio_answer.play()
 	#anim.play('ask')
 	animate_control(label_answer)
-	await audio_answer.finished
+	await get_tree().create_timer(0.2).timeout
+	#await audio_answer.finished
 	is_ready = true
 
 ## A flag button option was pressed
@@ -79,6 +82,7 @@ func _on_flag_pressed(button: FlagButton):
 
 ## Stops all audio from playing so I can play new ones without speaking over others
 func stop_audio():
+	audio_question.stop()
 	audio_answer.stop()
 	audio_no.stop()
 	audio_pressed.stop()
@@ -87,6 +91,9 @@ func stop_audio():
 ## Plays audio and anim for choosing the correct anwer
 func play_correct(pos: Vector2):
 	is_ready = false
+	anim.play('yes')
+	anim.seek(0)
+	animate_control(root, 1.05)
 	spawn_yes_fx(pos)
 	audio_yes.play()
 	await audio_yes.finished
@@ -101,6 +108,8 @@ func spawn_yes_fx(pos: Vector2):
 
 ## Plays audio and anim for picking a wrong option
 func play_wrong():
+	anim.play('fail')
+	anim.seek(0)
 	audio_no.play()
 	await audio_no.finished
 	audio_pressed.play()
@@ -112,11 +121,11 @@ func play_wrong():
 	ask_question()
 
 ## Plays a bouncing wiggle anim on a given control. Will return to 1,1 scale once finished.
-func animate_control(label: Control):
+func animate_control(label: Control, to: float = 1.25):
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(label, "scale", Vector2(1.25, 1.25), 0.08)
+	tween.tween_property(label, "scale", Vector2(to, to), 0.08)
 	await tween.finished
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)

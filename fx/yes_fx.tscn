@@ -50,7 +50,7 @@ stream = ExtResource("1_fd4j8")
 autoplay = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 80
+amount = 200
 process_material = SubResource("ParticleProcessMaterial_qnki1")
 texture = ExtResource("2_313ne")
 lifetime = 3.0

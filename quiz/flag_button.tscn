@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://gbpfsjlllrli"]
+[gd_scene load_steps=9 format=3 uid="uid://gbpfsjlllrli"]
 
 [ext_resource type="Texture2D" uid="uid://d3sj0a0hks4my" path="res://countries/flags/brazil.png" id="1_3cv7s"]
 [ext_resource type="Script" path="res://quiz/flag_button.gd" id="2_so8wy"]
+[ext_resource type="AudioStream" uid="uid://l1y0k8e8p6md" path="res://ui/audio/switch2.ogg" id="3_4pe05"]
+[ext_resource type="AudioStream" uid="uid://chpuddmlsjlim" path="res://ui/audio/switch11.ogg" id="4_pplpu"]
+[ext_resource type="AudioStream" uid="uid://dxheiqd4qmeaa" path="res://ui/audio/switch18.ogg" id="5_60m8q"]
+[ext_resource type="AudioStream" uid="uid://c2vh43jx21wxs" path="res://ui/audio/switch20.ogg" id="6_ehikv"]
+[ext_resource type="AudioStream" uid="uid://ckcop71ymxwco" path="res://ui/audio/switch21.ogg" id="7_ibpo4"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cfs56"]
+random_pitch = 1.2
+random_volume_offset_db = 6.0
+streams_count = 5
+stream_0/stream = ExtResource("3_4pe05")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_pplpu")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_60m8q")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_ehikv")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("7_ibpo4")
+stream_4/weight = 1.0
 
 [node name="FlagButton" type="Button"]
 custom_minimum_size = Vector2(400, 400)
@@ -20,5 +40,8 @@ pivot_offset = Vector2(200, 200)
 icon = ExtResource("1_3cv7s")
 expand_icon = true
 script = ExtResource("2_so8wy")
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_cfs56")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
