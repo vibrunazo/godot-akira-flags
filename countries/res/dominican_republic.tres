@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CountryData" load_steps=2 format=3 uid="uid://dw3p0i3f876ph"]
+
+[ext_resource type="Script" path="res://countries/country_data.gd" id="1_3x5fr"]
+
+[resource]
+script = ExtResource("1_3x5fr")
+id = "dominican_republic"
+display_name = "República Dominicana"

@@ -8,19 +8,23 @@ static var ids = [
 	'belgium',
 	'brazil',
 	'canada',
+	'dominican_republic',
 	'france',
 	'germany',
 	'hungary',
 	'israel',
 	'italy',
 	'japan',
+	'kiribati',
 	'lebanon',
 	'malaysia',
 	'poland',
 	'portugal',
 	'southkorea',
 	'spain',
+	'uk',
 	'us',
+	'wales',
 ]
 
 ## Returns the Texture2D for the flag of a given country id. Null if not found.

@@ -107,6 +107,7 @@ func play_correct(pos: Vector2):
 	#get_tree().change_scene_to_file("res://quiz/quiz_question.tscn")
 	QuizGame.restart_question()
 
+## Spawn visual fx for getting an answer correct
 func spawn_yes_fx(pos: Vector2):
 	var fx = yes_fx.instantiate()
 	fx.global_position = pos
