@@ -48,7 +48,9 @@ func build_grid():
 		button.country_id = id
 		button.pressed.connect(_on_flag_pressed.bind(button))
 		grid.add_child(button)
+	options.erase(QuizGame.last_answer)
 	answer = options.pick_random()
+	QuizGame.last_answer = answer
 	
 ## Updates the UI with text from the quiz
 func update_ui():
