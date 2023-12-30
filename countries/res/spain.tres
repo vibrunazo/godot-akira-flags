@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CountryData" load_steps=2 format=3 uid="uid://co4hsa83bheaq"]
+
+[ext_resource type="Script" path="res://countries/country_data.gd" id="1_le8ec"]
+
+[resource]
+script = ExtResource("1_le8ec")
+id = "spain"
+display_name = "Espanha"

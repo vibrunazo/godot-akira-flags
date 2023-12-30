@@ -17,6 +17,7 @@ static var ids = [
 	'lebanon',
 	'poland',
 	'southkorea',
+	'spain',
 	'us',
 ]
 
