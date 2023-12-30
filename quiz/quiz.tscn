@@ -140,7 +140,7 @@ tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.466667), Color(1, 1, 1, 0)]
@@ -344,6 +344,7 @@ max_polyphony = 5
 [node name="AudioNo2" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("7_tx6e5")
+volume_db = 12.0
 max_polyphony = 5
 
 [node name="AudioIsNot" type="AudioStreamPlayer" parent="."]
@@ -359,8 +360,11 @@ autoplay = "start"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_right = 1915.0
-offset_bottom = 1077.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0.886275, 0.137255, 0.0431373, 1)
 
