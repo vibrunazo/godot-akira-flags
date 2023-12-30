@@ -1,28 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://xjxa57oeener"]
 
 [ext_resource type="PackedScene" uid="uid://gbpfsjlllrli" path="res://quiz/flag_button.tscn" id="1_8b3nn"]
-[ext_resource type="Script" path="res://quiz/quiz.gd" id="1_dqiql"]
+[ext_resource type="Script" path="res://quiz/quiz_question.gd" id="1_dqiql"]
 [ext_resource type="PackedScene" uid="uid://bggqg8wbu3gsu" path="res://fx/yes_fx.tscn" id="2_lchvv"]
 [ext_resource type="AudioStream" uid="uid://belkpalw62877" path="res://quiz/audio/akiraqualbandeira.ogg" id="3_c08dy"]
 [ext_resource type="AudioStream" uid="uid://icbq07jsthcn" path="res://quiz/audio/akirayes.ogg" id="6_isa58"]
 [ext_resource type="AudioStream" uid="uid://dkkj27wgs8mwj" path="res://quiz/audio/akirano.ogg" id="7_t35jc"]
 [ext_resource type="AudioStream" uid="uid://bhsorg3wxb5nd" path="res://ui/audio/zapThreeToneDown.ogg" id="7_tx6e5"]
 [ext_resource type="AudioStream" uid="uid://b161c15hqsejg" path="res://quiz/audio/akiranaoe.ogg" id="9_t00g2"]
-
-[sub_resource type="Animation" id="Animation_un0qu"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_6rnbk"]
 length = 0.001
@@ -182,6 +167,21 @@ tracks/3/keys = {
 "values": [Color(0.886275, 0.137255, 0.0431373, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_un0qu"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_aat5p"]
 resource_name = "yes"
 step = 0.05
@@ -220,7 +220,7 @@ _data = {
 "yes": SubResource("Animation_aat5p")
 }
 
-[node name="Quiz" type="CanvasLayer"]
+[node name="QuizQuestion" type="CanvasLayer"]
 script = ExtResource("1_dqiql")
 yes_fx = ExtResource("2_lchvv")
 

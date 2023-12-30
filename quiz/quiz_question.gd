@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+## A single question in the quiz game
+class_name QuizQuestion
+
 ## List of countries that will show up as options in the quiz
 @export var options: Array[CountryData]
 ## Number of options per quiz
@@ -99,7 +102,8 @@ func play_correct(pos: Vector2):
 	await audio_yes.finished
 	anim.play('end')
 	await get_tree().create_timer(0.7).timeout
-	get_tree().change_scene_to_file("res://quiz/quiz.tscn")
+	#get_tree().change_scene_to_file("res://quiz/quiz_question.tscn")
+	QuizGame.restart_question()
 
 func spawn_yes_fx(pos: Vector2):
 	var fx = yes_fx.instantiate()
