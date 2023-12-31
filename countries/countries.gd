@@ -8,6 +8,7 @@ static var ids = [
 	'belgium',
 	'brazil',
 	'canada',
+	'chile',
 	'dominican_republic',
 	'france',
 	'germany',
@@ -23,7 +24,9 @@ static var ids = [
 	'southkorea',
 	'spain',
 	'uk',
+	'uruguay',
 	'us',
+	'vietnam',
 	'wales',
 ]
 
