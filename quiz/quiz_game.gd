@@ -4,7 +4,7 @@ class_name QuizGame extends Node2D
 ## PackedScene that will be instantiated to create new questions
 @export var question_scene: PackedScene
 ## Maximum number of questions to finish the game
-@export var max_questions: int = 2
+@export var max_questions: int = 10
 
 ## referenec to the progress bar
 @onready var progress: GameProgress = %GameProgress as GameProgress
