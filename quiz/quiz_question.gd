@@ -53,9 +53,10 @@ func build_grid():
 		button.country_id = id
 		button.pressed.connect(_on_flag_pressed.bind(button))
 		grid.add_child(button)
-	options.erase(QuizGame.last_answer)
+	for ignored: CountryData in QuizGame.history_list:
+		options.erase(ignored)
 	answer = options.pick_random()
-	QuizGame.last_answer = answer
+	QuizGame.add_to_history(answer)
 	
 ## Updates the UI with text from the quiz
 func update_ui():
