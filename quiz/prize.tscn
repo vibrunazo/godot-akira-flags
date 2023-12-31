@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://hr2k3bq6l1wq"]
+
+[ext_resource type="Texture2D" uid="uid://c6q7fseky532m" path="res://quiz/sprite/cookie.png" id="1_0xx27"]
+
+[node name="Prize" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0xx27")

@@ -1,8 +1,8 @@
-extends CanvasLayer
-
 ## A single question in the quiz game
-class_name QuizQuestion
+class_name QuizQuestion extends CanvasLayer
 
+## Finished nailed anim
+signal finished
 ## answered a question correctly
 signal nailed
 ## answered a question wrong
@@ -111,7 +111,7 @@ func play_correct(pos: Vector2):
 	anim.play('end')
 	await get_tree().create_timer(0.7).timeout
 	#get_tree().change_scene_to_file("res://quiz/quiz_question.tscn")
-	QuizGame.restart_question()
+	finished.emit()
 
 ## Spawn visual fx for getting an answer correct
 func spawn_yes_fx(pos: Vector2):

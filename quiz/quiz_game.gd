@@ -1,13 +1,10 @@
-extends Node2D
-
-
 ## Game that holds Quiz questions
-class_name QuizGame
+class_name QuizGame extends Node2D
 
 ## PackedScene that will be instantiated to create new questions
 @export var question_scene: PackedScene
 
-@onready var progress: GameProgress = %GameProgress
+@onready var progress: GameProgress = %GameProgress as GameProgress
 
 ## Holds a reference to the singleton QuizGame instance
 static var game: QuizGame
@@ -28,7 +25,7 @@ static func restart_question():
 ## Restarts the question
 func _restart_question():
 	question.queue_free()
-	var new_question: QuizQuestion = question_scene.instantiate()
+	var new_question: QuizQuestion = question_scene.instantiate() as QuizQuestion
 	add_child(new_question)
 	update_question(new_question)
 
@@ -39,6 +36,13 @@ func update_question(new_question: QuizQuestion):
 
 func _on_nailed():
 	progress.inc_value(1)
+	await question.finished
+	print('progress: %s' % progress.value)
+	if progress.value < progress.max_value:
+		_restart_question()
+	else: 
+		print('win')
+		question.queue_free()
 
 func _on_failed():
 	progress.inc_value(-1)

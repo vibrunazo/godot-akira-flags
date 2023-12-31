@@ -7,5 +7,53 @@
 script = ExtResource("1_c1cd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_5vo1w")
 offset = Vector2(-45, -50)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = ExtResource("1_5vo1w")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(104.101, 150.916, 134.069, 134.197, 153.943, 131.988, 185.173, 139.875, 180.442, 126.941, 171.609, 95.3953, 180.126, 64.165, 196.215, 51.8621, 229.338, 54.3858, 269.716, 54.0703, 305.994, 74.2596, 320.189, 114.954, 324.29, 155.963, 309.148, 180.884, 297.476, 220.001, 271.924, 254.701, 237.539, 261.01, 207.256, 256.909, 179.811, 234.827, 166.562, 235.143, 143.533, 256.594, 121.767, 262.903, 90.2208, 251.547, 81.0726, 230.411, 77.918, 190.032, 122.082, 204.544, 152.05, 180.569, 191.167, 176.152, 229.338, 200.758, 249.842, 178.045, 259.621, 143.976, 246.372, 98.2344, 246.372, 98.2344)
+uv = PackedVector2Array(104.101, 150.916, 134.069, 134.197, 153.943, 131.988, 185.173, 139.875, 180.442, 126.941, 171.609, 95.3953, 180.126, 64.165, 196.215, 51.8621, 229.338, 54.3858, 269.716, 54.0703, 305.994, 74.2596, 320.189, 114.954, 324.29, 155.963, 309.148, 180.884, 297.476, 220.001, 271.924, 254.701, 237.539, 261.01, 207.256, 256.909, 179.811, 234.827, 166.562, 235.143, 143.533, 256.594, 121.767, 262.903, 90.2208, 251.547, 81.0726, 230.411, 77.918, 190.032, 122.082, 204.544, 152.05, 180.569, 191.167, 176.152, 229.338, 200.758, 249.842, 178.045, 259.621, 143.976, 246.372, 98.2344, 246.372, 98.2344)
+polygons = [PackedInt32Array(31, 8, 9, 10, 11, 30), PackedInt32Array(8, 7, 6, 5, 4, 3, 30, 31), PackedInt32Array(30, 13, 12, 11), PackedInt32Array(30, 29, 28, 15, 14, 13), PackedInt32Array(3, 27, 28, 29, 30), PackedInt32Array(2, 3, 27, 26, 1), PackedInt32Array(26, 27, 18, 19), PackedInt32Array(18, 27, 28, 17), PackedInt32Array(17, 28, 15, 16), PackedInt32Array(0, 25, 26, 1), PackedInt32Array(0, 24, 25), PackedInt32Array(23, 24, 25, 22), PackedInt32Array(25, 22, 21), PackedInt32Array(25, 20, 21), PackedInt32Array(25, 26, 19, 20)]
+bones = ["spine1", PackedFloat32Array(0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0), "spine1/spine2", PackedFloat32Array(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0.5, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0), "spine1/spine2/head", PackedFloat32Array(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1), "spine1/spine4", PackedFloat32Array(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0), "spine1/spine4/tail", PackedFloat32Array(1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 8
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="spine1" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(231, 209)
+rotation = -1.10108
+rest = Transform2D(0.452634, -0.891696, 0.891696, 0.452634, 231, 209)
+
+[node name="spine2" type="Bone2D" parent="Skeleton2D/spine1"]
+position = Vector2(32.2504, 8.30146)
+rotation = 0.0270205
+scale = Vector2(1, 1)
+rest = Transform2D(0.999635, 0.0270172, -0.0270172, 0.999635, 32.2504, 8.30146)
+
+[node name="head" type="Bone2D" parent="Skeleton2D/spine1/spine2"]
+position = Vector2(33.5554, -13.6396)
+rotation = -0.522679
+scale = Vector2(1, 1)
+rest = Transform2D(0.866485, -0.499203, 0.499203, 0.866485, 33.5554, -13.6396)
+auto_calculate_length_and_angle = false
+length = 60.0
+bone_angle = 1.54816
+
+[node name="spine4" type="Bone2D" parent="Skeleton2D/spine1"]
+position = Vector2(5.86186, -65.7772)
+rotation = -0.495658
+scale = Vector2(1, 1)
+rest = Transform2D(0.879656, -0.475611, 0.475611, 0.879656, 5.86186, -65.7772)
+auto_calculate_length_and_angle = false
+length = 60.0
+bone_angle = 1.54816
+
+[node name="tail" type="Bone2D" parent="Skeleton2D/spine1/spine4"]
+position = Vector2(-43.5583, -56.1487)
+rest = Transform2D(1, -1.86265e-09, 1.86265e-09, 1, -43.5583, -56.1487)
+auto_calculate_length_and_angle = false
+length = 60.0
+bone_angle = 1.54816
