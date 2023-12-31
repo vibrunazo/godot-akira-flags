@@ -1,5 +1,4 @@
-## A Character that can move around
-class_name Char extends Node2D
+class_name Prize extends Node2D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
@@ -7,9 +6,6 @@ class_name Char extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-func eat():
+
+func play_win():
 	anim.play("eat")
-	await anim.animation_finished
-	anim.play("celebrate")
-	await anim.animation_finished
-	anim.play("idle")
