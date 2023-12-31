@@ -1,6 +1,8 @@
 ## A Character that can move around
 class_name Char extends Node2D
 
+signal animation_finished
+
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -13,3 +15,4 @@ func eat():
 	anim.play("celebrate")
 	await anim.animation_finished
 	anim.play("idle")
+	animation_finished.emit()

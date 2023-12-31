@@ -8,6 +8,7 @@ class_name QuizGame extends Node2D
 
 ## referenec to the progress bar
 @onready var progress: GameProgress = %GameProgress as GameProgress
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 ## Holds a reference to the singleton QuizGame instance
 static var game: QuizGame
@@ -45,9 +46,17 @@ func _on_nailed():
 	if progress.value < progress.max_value:
 		_restart_question()
 	else: 
-		print('win')
-		question.queue_free()
-		progress.play_win()
+		win()
+
+func win():
+	print('win')
+	question.queue_free()
+	progress.play_win()
+	await progress.animation_finished
+	await get_tree().create_timer(1).timeout
+	anim.play("end")
+	await anim.animation_finished
+	get_tree().reload_current_scene()
 
 func _on_failed():
 	progress.inc_value(-1)
