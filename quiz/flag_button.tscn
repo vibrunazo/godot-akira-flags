@@ -24,7 +24,7 @@ stream_4/stream = ExtResource("7_ibpo4")
 stream_4/weight = 1.0
 
 [node name="FlagButton" type="Button"]
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(300, 300)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

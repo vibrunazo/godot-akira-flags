@@ -3,6 +3,11 @@ extends CanvasLayer
 ## A single question in the quiz game
 class_name QuizQuestion
 
+## answered a question correctly
+signal nailed
+## answered a question wrong
+signal failed
+
 ## List of countries that will show up as options in the quiz
 @export var options: Array[CountryData]
 ## Number of options per quiz
@@ -96,6 +101,7 @@ func stop_audio():
 ## Plays audio and anim for choosing the correct anwer
 func play_correct(pos: Vector2):
 	is_ready = false
+	nailed.emit()
 	anim.play('yes')
 	anim.seek(0)
 	animate_control(root, 1.05)
@@ -115,6 +121,7 @@ func spawn_yes_fx(pos: Vector2):
 
 ## Plays audio and anim for picking a wrong option
 func play_wrong():
+	failed.emit()
 	anim.play('fail')
 	anim.seek(0)
 	audio_no.play()

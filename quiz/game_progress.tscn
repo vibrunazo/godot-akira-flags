@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8aa2ng46t0jx"]
+
+[ext_resource type="PackedScene" uid="uid://s1tvck4cbw11" path="res://quiz/progress_char.tscn" id="1_84nsa"]
+[ext_resource type="Script" path="res://quiz/game_progress.gd" id="1_ryrag"]
+
+[node name="GameProgress" type="ProgressBar"]
+custom_minimum_size = Vector2(1400, 100)
+offset_right = 4.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 80
+max_value = 10.0
+script = ExtResource("1_ryrag")
+
+[node name="ProgressChar" parent="." instance=ExtResource("1_84nsa")]
+unique_name_in_owner = true
