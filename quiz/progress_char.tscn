@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://s1tvck4cbw11"]
+[gd_scene load_steps=11 format=3 uid="uid://s1tvck4cbw11"]
 
 [ext_resource type="Texture2D" uid="uid://dgsya0a3qf378" path="res://quiz/sprite/dratini02.png" id="1_5vo1w"]
 [ext_resource type="Script" path="res://quiz/progress_char.gd" id="1_c1cd6"]
@@ -79,6 +79,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.495658, -0.495658, -0.495658]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine2/head:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33.5554, -13.6396)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine2/head:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.514984]
 }
 
 [sub_resource type="Animation" id="Animation_cptlm"]
@@ -239,6 +263,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine2/head:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.514984]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_asgje")]
+}
 
 [sub_resource type="Animation" id="Animation_3xvky"]
 resource_name = "eat"
@@ -279,9 +327,33 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("3_asgje")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.018448)
 }
 tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.86186, -65.7772)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine4/tail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-43.5583, -56.1487)]
+}
 
 [sub_resource type="Animation" id="Animation_uiqwr"]
 resource_name = "celebrate"
@@ -334,16 +406,94 @@ tracks/3/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("4_kqqjs")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.036585)
 }
 tracks/3/use_blend = true
+
+[sub_resource type="Animation" id="Animation_s48d5"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine2/head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(33.5554, -13.6396), Vector2(35.4616, -10.123), Vector2(33.5554, -13.6396)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(32.2504, 8.30146), Vector2(26.1035, 27.1221), Vector2(32.2504, 8.30146)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5.86186, -65.7772), Vector2(-5.89307, -86.7253), Vector2(5.86186, -65.7772)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine4/tail:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-43.5583, -56.1487), Vector2(-38.9112, -81.0366), Vector2(-43.5583, -56.1487)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteRoot/Skeleton2D/spine1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(231, 209), Vector2(246, 209), Vector2(231, 209)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteRoot/Skeleton2D/spine1/spine2/head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.514984, -0.164158, -0.514984]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qnq1x"]
 _data = {
 "RESET": SubResource("Animation_cptlm"),
 "celebrate": SubResource("Animation_uiqwr"),
 "eat": SubResource("Animation_3xvky"),
-"idle": SubResource("Animation_28h7s")
+"idle": SubResource("Animation_28h7s"),
+"walk": SubResource("Animation_s48d5")
 }
 
 [node name="ProgressChar" type="Node2D"]
@@ -381,7 +531,7 @@ rest = Transform2D(0.999635, 0.0270172, -0.0270172, 0.999635, 32.2504, 8.30146)
 
 [node name="head" type="Bone2D" parent="SpriteRoot/Skeleton2D/spine1/spine2"]
 position = Vector2(33.5554, -13.6396)
-rotation = -0.522679
+rotation = -0.514984
 scale = Vector2(1, 1)
 rest = Transform2D(0.866485, -0.499203, 0.499203, 0.866485, 33.5554, -13.6396)
 auto_calculate_length_and_angle = false
@@ -405,9 +555,11 @@ length = 60.0
 bone_angle = 1.54816
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_asgje")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qnq1x")
 }
 autoplay = "idle"
+blend_times = [&"idle", &"walk", 0.1, &"idle", &"idle", 0.1]
