@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CountryData" load_steps=2 format=3 uid="uid://cre5s1x7fhl5a"]
+
+[ext_resource type="Script" path="res://countries/country_data.gd" id="1_acqnb"]
+
+[resource]
+script = ExtResource("1_acqnb")
+id = "newzeland"
+display_name = "Nova Zelândia"
