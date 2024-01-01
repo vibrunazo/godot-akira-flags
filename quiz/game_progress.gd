@@ -6,26 +6,22 @@ signal animation_finished
 @onready var pchar: Char = %ProgressChar
 @onready var prize: Prize = %Prize
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+## Target value for the progress bar, [member value] will be slowly animated towards target
+var target: float = 0
 
 ## Incremeants the value and updates the Char position
 func inc_value(inc: int):
-	#value += inc
-	var target := value + inc
+	target += inc
 	target = clamp(target, min_value, max_value)
 	if target == value: return
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "value", target, 1)
-	#tween.tween_callback(update_char)
 	move_char_to(target)
 
 func move_char_to(to: float):
 	pchar.move_to(to * size.x / max_value)
 
 func update_char():
-	#pchar.move_to(value * size.x / max_value)
 	pchar.position.x = value * size.x / max_value
 
 ## Play win animation
