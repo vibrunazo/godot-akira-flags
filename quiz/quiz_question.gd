@@ -90,6 +90,7 @@ func _on_flag_pressed(button: FlagButton):
 		play_correct(button.global_position + button.pivot_offset)
 	else:
 		play_wrong()
+		button.disabled = true
 
 ## Stops all audio from playing so I can play new ones without speaking over others
 func stop_audio():
@@ -123,6 +124,7 @@ func spawn_yes_fx(pos: Vector2):
 ## Plays audio and anim for picking a wrong option
 func play_wrong():
 	failed.emit()
+	
 	anim.play('fail')
 	anim.seek(0)
 	audio_no.play()

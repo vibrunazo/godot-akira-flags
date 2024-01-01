@@ -52,7 +52,6 @@ func update_question(new_question: QuizQuestion):
 func _on_nailed():
 	progress.inc_value(1)
 	await question.finished
-	print('progress: %s' % progress.value)
 	if progress.value < progress.max_value:
 		_restart_question()
 	else: 
