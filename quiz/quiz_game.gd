@@ -1,6 +1,8 @@
 ## Game that holds Quiz questions
 class_name QuizGame extends Node2D
 
+## The PackedScene to change to when exiting the current scene
+@export var previous_scene: PackedScene
 ## PackedScene that will be instantiated to create new questions
 @export var question_scene: PackedScene
 ## Maximum number of questions to finish the game
@@ -74,4 +76,6 @@ func _on_failed():
 
 
 func _on_quit_button_confirmed():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://ui/level_select.tscn")
+	#if not previous_scene: return
+	#get_tree().change_scene_to_packed(previous_scene)

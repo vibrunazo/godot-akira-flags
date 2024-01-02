@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgl36sowrdv5e"]
+
+[ext_resource type="Texture2D" uid="uid://xjkagbd0i50q" path="res://ui/sprite/quiz_icon.png" id="1_igtne"]
+[ext_resource type="Script" path="res://ui/level_select.gd" id="1_ykpc3"]
+[ext_resource type="Script" path="res://ui/level_button.gd" id="3_6hcr6"]
+
+[node name="LevelSelect" type="CanvasLayer"]
+script = ExtResource("1_ykpc3")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+icon = ExtResource("1_igtne")
+script = ExtResource("3_6hcr6")
+level_scene = "res://quiz/quiz_game.tscn"
+
+[connection signal="pressed" from="GridContainer/Button" to="GridContainer/Button" method="_on_pressed"]

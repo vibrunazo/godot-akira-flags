@@ -18,7 +18,7 @@ func _ready():
 	add_child(timer)
 
 func _on_button_down():
-	if anim.is_playing(): return
+	#if anim.is_playing(): return
 	if not is_ready:
 		anim.play("fadein")
 		await anim.animation_finished
