@@ -71,3 +71,7 @@ func win():
 ## Failed a question
 func _on_failed():
 	progress.inc_value(-1)
+
+
+func _on_quit_button_confirmed():
+	get_tree().quit()

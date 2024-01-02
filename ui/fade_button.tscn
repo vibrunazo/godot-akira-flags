@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce0uocnomampc"]
+
+[ext_resource type="Texture2D" uid="uid://dm2uvb4is4r7l" path="res://ui/sprite/x.png" id="1_xbb0n"]
+[ext_resource type="Script" path="res://ui/fade_button.gd" id="2_s7ag6"]
+
+[sub_resource type="Animation" id="Animation_n0mgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.392157, 0.588235, 0.784314, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_bsr21"]
+resource_name = "fadein"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.392157, 0.588235, 0.784314, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fjr6o"]
+resource_name = "fadeout"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.392157, 0.588235, 0.784314, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ma3jf"]
+_data = {
+"RESET": SubResource("Animation_n0mgk"),
+"fadein": SubResource("Animation_bsr21"),
+"fadeout": SubResource("Animation_fjr6o")
+}
+
+[node name="FadeButton" type="Button"]
+modulate = Color(0.392157, 0.588235, 0.784314, 0.392157)
+focus_mode = 0
+icon = ExtResource("1_xbb0n")
+script = ExtResource("2_s7ag6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ma3jf")
+}
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
