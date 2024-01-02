@@ -9,6 +9,9 @@ signal animation_finished
 ## Target value for the progress bar, [member value] will be slowly animated towards target
 var target: float = 0
 
+func _ready():
+	value = 0
+
 ## Incremeants the value and updates the Char position
 func inc_value(inc: int):
 	target += inc
