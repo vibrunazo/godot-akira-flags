@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://cisxo0ss830gq"]
+
+[ext_resource type="Script" path="res://games/ballgame/push_field.gd" id="1_28sso"]
+[ext_resource type="PackedScene" uid="uid://xqu85qhwxrwx" path="res://games/ballgame/explosion_fx.tscn" id="2_plr61"]
+[ext_resource type="Texture2D" uid="uid://dd2g4j7jq8vbn" path="res://games/ballgame/tex/circle400.png" id="2_tg3ip"]
+[ext_resource type="AudioStream" uid="uid://drbbbcwa0fv8l" path="res://fx/audio/punch01.ogg" id="4_k4hm7"]
+[ext_resource type="AudioStream" uid="uid://cqqow8h8w13um" path="res://fx/audio/punch02.ogg" id="5_fhbdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipg06"]
+size = Vector2(160, 160)
+
+[sub_resource type="Animation" id="Animation_11j8t"]
+resource_name = "start"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteRoot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(2, 2), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteRoot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hvh2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteRoot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteRoot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d7pa7"]
+_data = {
+"RESET": SubResource("Animation_hvh2d"),
+"start": SubResource("Animation_11j8t")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kr4c4"]
+random_pitch = 1.3
+random_volume_offset_db = 6.0
+streams_count = 2
+stream_0/stream = ExtResource("4_k4hm7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_fhbdg")
+stream_1/weight = 1.0
+
+[node name="PushField" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_28sso")
+fx_scene = ExtResource("2_plr61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ipg06")
+
+[node name="SpriteRoot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteRoot"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tg3ip")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d7pa7")
+}
+autoplay = "start"
+speed_scale = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_kr4c4")
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

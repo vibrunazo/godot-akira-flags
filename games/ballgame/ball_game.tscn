@@ -9,6 +9,7 @@
 script = ExtResource("1_v850d")
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="walls" type="Node2D" parent="GameLayer"]
 
@@ -21,7 +22,7 @@ rotation = 0.264749
 scale = Vector2(3.70176, 1)
 
 [node name="Wall3" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
-position = Vector2(839, 882)
+position = Vector2(910, 838)
 rotation = -0.403158
 scale = Vector2(3.70176, 1)
 
