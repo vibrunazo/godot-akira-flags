@@ -1,7 +1,10 @@
 ## A foot Ball game
 class_name BallGame extends GameMode
 
+
 @onready var game_layer: CanvasLayer = %GameLayer
+@onready var net: Area2D = %Net
+@onready var audio_goal: AudioStreamPlayer = $AudioGoal
 
 ## Is cooldown ready to spawn push fields
 var is_spawn_ready := true
@@ -26,3 +29,10 @@ func spawn_push(pos: Vector2):
 	await get_tree().create_timer(spawn_cooldown).timeout
 	is_spawn_ready = true
 	
+
+
+func _on_net_body_entered(body):
+	if body is PlayerBall:
+		print('goal!')
+		audio_goal.play()
+	pass # Replace with function body.
