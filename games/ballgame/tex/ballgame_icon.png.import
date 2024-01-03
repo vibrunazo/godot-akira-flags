@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgsya0a3qf378"
-path="res://.godot/imported/dratini02.png-dca70f253b1a2d3f7ac345e5fd17d8c8.ctex"
+uid="uid://talpbmvsnftp"
+path="res://.godot/imported/ballgame_icon.png-b563ac8e762f70858c1fa8e046f6990d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://quiz/sprite/dratini02.png"
-dest_files=["res://.godot/imported/dratini02.png-dca70f253b1a2d3f7ac345e5fd17d8c8.ctex"]
+source_file="res://games/ballgame/tex/ballgame_icon.png"
+dest_files=["res://.godot/imported/ballgame_icon.png-b563ac8e762f70858c1fa8e046f6990d.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

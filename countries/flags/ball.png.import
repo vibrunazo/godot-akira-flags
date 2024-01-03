@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cduplxg87ofjn"
-path="res://.godot/imported/cookie-particles.png-341f6b877053a5fcde96c75df0f563f7.ctex"
+uid="uid://18ivly7qkyw3"
+path="res://.godot/imported/ball.png-d4e69848977736914dcc4f3f3f4b13a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://quiz/sprite/cookie-particles.png"
-dest_files=["res://.godot/imported/cookie-particles.png-341f6b877053a5fcde96c75df0f563f7.ctex"]
+source_file="res://countries/flags/ball.png"
+dest_files=["res://.godot/imported/ball.png-d4e69848977736914dcc4f3f3f4b13a1.ctex"]
 
 [params]
 

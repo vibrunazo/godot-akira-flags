@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgl36sowrdv5e"]
+[gd_scene load_steps=5 format=3 uid="uid://dgl36sowrdv5e"]
 
 [ext_resource type="Texture2D" uid="uid://xjkagbd0i50q" path="res://ui/sprite/quiz_icon.png" id="1_igtne"]
 [ext_resource type="Script" path="res://ui/level_select.gd" id="1_ykpc3"]
 [ext_resource type="Script" path="res://ui/level_button.gd" id="3_6hcr6"]
+[ext_resource type="Texture2D" uid="uid://talpbmvsnftp" path="res://games/ballgame/tex/ballgame_icon.png" id="4_p2m4g"]
 
 [node name="LevelSelect" type="CanvasLayer"]
 script = ExtResource("1_ykpc3")
@@ -19,11 +20,20 @@ offset_right = 260.0
 offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 64
+columns = 2
 
 [node name="Button" type="Button" parent="GridContainer"]
 layout_mode = 2
 icon = ExtResource("1_igtne")
 script = ExtResource("3_6hcr6")
-level_scene = "res://quiz/quiz_game.tscn"
+level_scene = "res://games/quiz/quiz_game.tscn"
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+icon = ExtResource("4_p2m4g")
+script = ExtResource("3_6hcr6")
+level_scene = "res://games/ballgame/ball_game.tscn"
 
 [connection signal="pressed" from="GridContainer/Button" to="GridContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Button2" to="GridContainer/Button2" method="_on_pressed"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://hr2k3bq6l1wq"]
 
-[ext_resource type="Texture2D" uid="uid://c6q7fseky532m" path="res://quiz/sprite/cookie.png" id="1_0xx27"]
-[ext_resource type="Script" path="res://quiz/prize.gd" id="1_n17wb"]
-[ext_resource type="AudioStream" uid="uid://p4oueeupilsc" path="res://quiz/audio/crunch.1.ogg" id="3_c74mw"]
-[ext_resource type="Texture2D" uid="uid://cduplxg87ofjn" path="res://quiz/sprite/cookie-particles.png" id="4_at850"]
+[ext_resource type="Script" path="res://games/quiz/prize.gd" id="1_k2x5y"]
+[ext_resource type="Texture2D" uid="uid://c6q7fseky532m" path="res://games/quiz/sprite/cookie.png" id="2_wc6g5"]
+[ext_resource type="AudioStream" uid="uid://p4oueeupilsc" path="res://games/quiz/audio/crunch.1.ogg" id="3_vom8v"]
+[ext_resource type="Texture2D" uid="uid://cduplxg87ofjn" path="res://games/quiz/sprite/cookie-particles.png" id="4_dssau"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tdtc"]
 
@@ -64,7 +64,7 @@ tracks/3/keys = {
 random_pitch = 1.2
 random_volume_offset_db = 6.0
 streams_count = 1
-stream_0/stream = ExtResource("3_c74mw")
+stream_0/stream = ExtResource("3_vom8v")
 stream_0/weight = 1.0
 
 [sub_resource type="Animation" id="Animation_7cbgs"]
@@ -202,7 +202,7 @@ alpha_curve = SubResource("CurveTexture_my4vu")
 anim_offset_max = 1.0
 
 [node name="Prize" type="Node2D"]
-script = ExtResource("1_n17wb")
+script = ExtResource("1_k2x5y")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 clip_children = 1
@@ -227,7 +227,7 @@ show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ProgressBar"]
 position = Vector2(125, 100)
-texture = ExtResource("1_0xx27")
+texture = ExtResource("2_wc6g5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -244,7 +244,7 @@ position = Vector2(0, -68)
 emitting = false
 amount = 24
 process_material = SubResource("ParticleProcessMaterial_6qgxy")
-texture = ExtResource("4_at850")
+texture = ExtResource("4_dssau")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.8
@@ -256,7 +256,7 @@ position = Vector2(0, -25)
 emitting = false
 amount = 24
 process_material = SubResource("ParticleProcessMaterial_6qgxy")
-texture = ExtResource("4_at850")
+texture = ExtResource("4_dssau")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.8
@@ -268,7 +268,7 @@ position = Vector2(0, 53)
 emitting = false
 amount = 24
 process_material = SubResource("ParticleProcessMaterial_6qgxy")
-texture = ExtResource("4_at850")
+texture = ExtResource("4_dssau")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.8

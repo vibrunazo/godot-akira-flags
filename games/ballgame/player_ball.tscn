@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwomel0weobus"]
+
+[ext_resource type="Texture2D" uid="uid://vnkm0gikrco" path="res://games/ballgame/tex/ball.png" id="1_57puk"]
+[ext_resource type="Texture2D" uid="uid://d3sj0a0hks4my" path="res://countries/flags/brazil.png" id="2_d0bg5"]
+[ext_resource type="Texture2D" uid="uid://cx2q2s20kp262" path="res://games/ballgame/tex/ball-a.png" id="3_67wng"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_366qw"]
+bounce = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tq2n5"]
+radius = 50.0
+
+[node name="PlayerBall" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_366qw")
+
+[node name="SpriteRoot" type="Node2D" parent="."]
+
+[node name="SpriteCircle" type="Sprite2D" parent="SpriteRoot"]
+clip_children = 2
+texture = ExtResource("1_57puk")
+
+[node name="SpriteFlag" type="Sprite2D" parent="SpriteRoot/SpriteCircle"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_d0bg5")
+
+[node name="SpriteShading" type="Sprite2D" parent="SpriteRoot/SpriteCircle"]
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("3_67wng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tq2n5")

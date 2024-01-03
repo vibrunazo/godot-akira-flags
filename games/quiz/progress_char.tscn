@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://s1tvck4cbw11"]
 
-[ext_resource type="Texture2D" uid="uid://dgsya0a3qf378" path="res://quiz/sprite/dratini02.png" id="1_5vo1w"]
-[ext_resource type="Script" path="res://quiz/progress_char.gd" id="1_c1cd6"]
-[ext_resource type="AudioStream" uid="uid://cnny8cyqlb3di" path="res://quiz/audio/akiranomnom.ogg" id="3_asgje"]
-[ext_resource type="AudioStream" uid="uid://bpr5jdismt5d3" path="res://quiz/audio/akiradelicia.ogg" id="4_kqqjs"]
+[ext_resource type="Script" path="res://games/quiz/progress_char.gd" id="1_4ju17"]
+[ext_resource type="Texture2D" uid="uid://dgsya0a3qf378" path="res://games/quiz/sprite/dratini02.png" id="2_yhctt"]
+[ext_resource type="AudioStream" uid="uid://cnny8cyqlb3di" path="res://games/quiz/audio/akiranomnom.ogg" id="3_jr3bh"]
+[ext_resource type="AudioStream" uid="uid://bpr5jdismt5d3" path="res://games/quiz/audio/akiradelicia.ogg" id="4_lfllh"]
 
 [sub_resource type="Animation" id="Animation_cptlm"]
 length = 0.001
@@ -185,7 +185,7 @@ tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_asgje")]
+"values": [ExtResource("3_jr3bh")]
 }
 
 [sub_resource type="Animation" id="Animation_uiqwr"]
@@ -237,7 +237,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_kqqjs")
+"stream": ExtResource("4_lfllh")
 }],
 "times": PackedFloat32Array(0.036585)
 }
@@ -280,7 +280,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_asgje")
+"stream": ExtResource("3_jr3bh")
 }],
 "times": PackedFloat32Array(0.018448)
 }
@@ -497,18 +497,18 @@ _data = {
 }
 
 [node name="ProgressChar" type="Node2D"]
-script = ExtResource("1_c1cd6")
+script = ExtResource("1_4ju17")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_5vo1w")
+texture = ExtResource("2_yhctt")
 offset = Vector2(-45, -50)
 
 [node name="SpriteRoot" type="Node2D" parent="."]
 position = Vector2(-245, -200)
 
 [node name="Polygon2D" type="Polygon2D" parent="SpriteRoot"]
-texture = ExtResource("1_5vo1w")
+texture = ExtResource("2_yhctt")
 skeleton = NodePath("../Skeleton2D")
 polygon = PackedVector2Array(104.101, 150.916, 134.069, 134.197, 153.943, 131.988, 185.173, 139.875, 180.442, 126.941, 171.609, 95.3953, 180.126, 64.165, 196.215, 51.8621, 229.338, 54.3858, 269.716, 54.0703, 305.994, 74.2596, 320.189, 114.954, 324.29, 155.963, 309.148, 180.884, 297.476, 220.001, 271.924, 254.701, 237.539, 261.01, 207.256, 256.909, 179.811, 234.827, 166.562, 235.143, 143.533, 256.594, 121.767, 262.903, 90.2208, 251.547, 81.0726, 230.411, 77.918, 190.032, 122.082, 204.544, 152.05, 180.569, 191.167, 176.152, 229.338, 200.758, 249.842, 178.045, 259.621, 143.976, 246.372, 98.2344, 246.372, 98.2344)
 uv = PackedVector2Array(104.101, 150.916, 134.069, 134.197, 153.943, 131.988, 185.173, 139.875, 180.442, 126.941, 171.609, 95.3953, 180.126, 64.165, 196.215, 51.8621, 229.338, 54.3858, 269.716, 54.0703, 305.994, 74.2596, 320.189, 114.954, 324.29, 155.963, 309.148, 180.884, 297.476, 220.001, 271.924, 254.701, 237.539, 261.01, 207.256, 256.909, 179.811, 234.827, 166.562, 235.143, 143.533, 256.594, 121.767, 262.903, 90.2208, 251.547, 81.0726, 230.411, 77.918, 190.032, 122.082, 204.544, 152.05, 180.569, 191.167, 176.152, 229.338, 200.758, 249.842, 178.045, 259.621, 143.976, 246.372, 98.2344, 246.372, 98.2344)
@@ -552,11 +552,11 @@ length = 60.0
 bone_angle = 1.54816
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_asgje")
+stream = ExtResource("3_jr3bh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qnq1x")
 }
 autoplay = "idle"
-blend_times = [&"idle", &"walk", 0.1, &"idle", &"idle", 0.1]
+blend_times = [&"idle", &"idle", 0.1, &"idle", &"walk", 0.1]

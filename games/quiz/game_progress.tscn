@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8aa2ng46t0jx"]
 
-[ext_resource type="PackedScene" uid="uid://s1tvck4cbw11" path="res://quiz/progress_char.tscn" id="1_84nsa"]
+[ext_resource type="PackedScene" uid="uid://s1tvck4cbw11" path="res://games/quiz/progress_char.tscn" id="1_84nsa"]
 [ext_resource type="Texture2D" uid="uid://dvj4xme2kh2gu" path="res://ui/sprite/progress-bg.png" id="1_f3l1b"]
 [ext_resource type="Texture2D" uid="uid://d2f64fc0ocokt" path="res://ui/sprite/progress-fill.png" id="1_k8eff"]
-[ext_resource type="Script" path="res://quiz/game_progress.gd" id="1_ryrag"]
-[ext_resource type="PackedScene" uid="uid://hr2k3bq6l1wq" path="res://quiz/prize.tscn" id="3_mklfg"]
+[ext_resource type="Script" path="res://games/quiz/game_progress.gd" id="1_ryrag"]
+[ext_resource type="PackedScene" uid="uid://hr2k3bq6l1wq" path="res://games/quiz/prize.tscn" id="3_mklfg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4mfah"]
 content_margin_top = 0.0

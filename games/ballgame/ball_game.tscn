@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm7wx8vnwdxit"]
+
+[ext_resource type="PackedScene" uid="uid://bwomel0weobus" path="res://games/ballgame/player_ball.tscn" id="1_4n2hc"]
+[ext_resource type="Script" path="res://games/ballgame/ball_game.gd" id="1_v850d"]
+[ext_resource type="PackedScene" uid="uid://ce0uocnomampc" path="res://ui/fade_button.tscn" id="2_tpmqb"]
+[ext_resource type="PackedScene" uid="uid://b6jiwqw1qjyc4" path="res://games/ballgame/wall.tscn" id="3_ec2oj"]
+
+[node name="BallGame" type="Node2D"]
+script = ExtResource("1_v850d")
+
+[node name="GameLayer" type="CanvasLayer" parent="."]
+
+[node name="walls" type="Node2D" parent="GameLayer"]
+
+[node name="Wall" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(164, 594)
+
+[node name="Wall2" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(467, 658)
+rotation = 0.264749
+scale = Vector2(3.70176, 1)
+
+[node name="Wall3" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(839, 882)
+rotation = -0.403158
+scale = Vector2(3.70176, 1)
+
+[node name="Wall4" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(691, 286)
+rotation = -0.451857
+scale = Vector2(3.70176, 1)
+
+[node name="Wall5" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(19, 242)
+rotation = -1.5708
+scale = Vector2(3.70176, 1)
+
+[node name="Wall6" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(19, 712)
+rotation = -1.5708
+scale = Vector2(3.70176, 1)
+
+[node name="Wall7" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(19, 1180)
+rotation = -1.5708
+scale = Vector2(3.70176, 1)
+
+[node name="Wall12" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(1912, 212)
+rotation = -1.5708
+scale = Vector2(3.70176, 1)
+
+[node name="Wall13" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(1912, 682)
+rotation = -1.5708
+scale = Vector2(3.70176, 1)
+
+[node name="Wall14" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(1912, 1150)
+rotation = -1.5708
+scale = Vector2(3.70176, 1)
+
+[node name="Wall8" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(263, 1088)
+scale = Vector2(3.70176, 1)
+
+[node name="Wall9" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(731, 1088)
+scale = Vector2(3.70176, 1)
+
+[node name="Wall10" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(1203, 1088)
+scale = Vector2(3.70176, 1)
+
+[node name="Wall11" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(1675, 1088)
+scale = Vector2(3.70176, 1)
+
+[node name="balls" type="Node2D" parent="GameLayer"]
+
+[node name="PlayerBall" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(423, -2)
+
+[node name="PlayerBall2" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(635, -2)
+
+[node name="PlayerBall3" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(528, 239)
+
+[node name="PlayerBall4" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(417, 212)
+
+[node name="PlayerBall5" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(639, 213)
+
+[node name="PlayerBall6" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(731, 152)
+
+[node name="PlayerBall7" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
+position = Vector2(326, 141)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer"]
+offset_left = 69.0
+offset_top = 61.0
+offset_right = 205.0
+offset_bottom = 197.0
+
+[node name="QuitButton" parent="UILayer/MarginContainer" instance=ExtResource("2_tpmqb")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="confirmed" from="UILayer/MarginContainer/QuitButton" to="." method="_on_quit_button_confirmed"]

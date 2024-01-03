@@ -49,7 +49,7 @@ func build_grid():
 		var id: String = candidates.pop_back()
 		var data: CountryData = Countries.get_data(id)
 		options.append(data)
-		var button: FlagButton = load("res://quiz/flag_button.tscn").instantiate()
+		var button: FlagButton = load("res://games/quiz/flag_button.tscn").instantiate()
 		button.country_id = id
 		button.pressed.connect(_on_flag_pressed.bind(button))
 		grid.add_child(button)

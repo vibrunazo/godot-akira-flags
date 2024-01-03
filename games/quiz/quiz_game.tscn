@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccgsbabfnsk6d"]
+[gd_scene load_steps=11 format=3 uid="uid://ccgsbabfnsk6d"]
 
-[ext_resource type="Script" path="res://quiz/quiz_game.gd" id="1_fd82r"]
-[ext_resource type="PackedScene" uid="uid://xjxa57oeener" path="res://quiz/quiz_question.tscn" id="1_pnfh2"]
-[ext_resource type="PackedScene" uid="uid://dgl36sowrdv5e" path="res://ui/level_select.tscn" id="2_3lh1v"]
-[ext_resource type="PackedScene" uid="uid://c8aa2ng46t0jx" path="res://quiz/game_progress.tscn" id="3_gxgvc"]
+[ext_resource type="Script" path="res://games/quiz/quiz_game.gd" id="1_fd82r"]
+[ext_resource type="PackedScene" uid="uid://xjxa57oeener" path="res://games/quiz/quiz_question.tscn" id="1_pnfh2"]
+[ext_resource type="PackedScene" uid="uid://c8aa2ng46t0jx" path="res://games/quiz/game_progress.tscn" id="3_gxgvc"]
 [ext_resource type="PackedScene" uid="uid://ce0uocnomampc" path="res://ui/fade_button.tscn" id="4_24pgt"]
 
 [sub_resource type="Gradient" id="Gradient_b0pwk"]
@@ -92,7 +91,6 @@ _data = {
 
 [node name="QuizGame" type="Node2D"]
 script = ExtResource("1_fd82r")
-previous_scene = ExtResource("2_3lh1v")
 question_scene = ExtResource("1_pnfh2")
 
 [node name="BgLayer" type="CanvasLayer" parent="."]

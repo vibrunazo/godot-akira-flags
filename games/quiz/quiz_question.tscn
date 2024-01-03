@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://xjxa57oeener"]
 
-[ext_resource type="PackedScene" uid="uid://gbpfsjlllrli" path="res://quiz/flag_button.tscn" id="1_8b3nn"]
-[ext_resource type="Script" path="res://quiz/quiz_question.gd" id="1_dqiql"]
+[ext_resource type="PackedScene" uid="uid://gbpfsjlllrli" path="res://games/quiz/flag_button.tscn" id="1_8b3nn"]
+[ext_resource type="Script" path="res://games/quiz/quiz_question.gd" id="1_dqiql"]
 [ext_resource type="PackedScene" uid="uid://bggqg8wbu3gsu" path="res://fx/yes_fx.tscn" id="2_lchvv"]
-[ext_resource type="AudioStream" uid="uid://belkpalw62877" path="res://quiz/audio/akiraqualbandeira.ogg" id="3_c08dy"]
-[ext_resource type="AudioStream" uid="uid://icbq07jsthcn" path="res://quiz/audio/akirayes.ogg" id="6_isa58"]
-[ext_resource type="AudioStream" uid="uid://dkkj27wgs8mwj" path="res://quiz/audio/akirano.ogg" id="7_t35jc"]
+[ext_resource type="AudioStream" uid="uid://belkpalw62877" path="res://games/quiz/audio/akiraqualbandeira.ogg" id="3_c08dy"]
+[ext_resource type="AudioStream" uid="uid://icbq07jsthcn" path="res://games/quiz/audio/akirayes.ogg" id="6_isa58"]
+[ext_resource type="AudioStream" uid="uid://dkkj27wgs8mwj" path="res://games/quiz/audio/akirano.ogg" id="7_t35jc"]
 [ext_resource type="AudioStream" uid="uid://bhsorg3wxb5nd" path="res://ui/audio/zapThreeToneDown.ogg" id="7_tx6e5"]
-[ext_resource type="AudioStream" uid="uid://b161c15hqsejg" path="res://quiz/audio/akiranaoe.ogg" id="9_t00g2"]
+[ext_resource type="AudioStream" uid="uid://b161c15hqsejg" path="res://games/quiz/audio/akiranaoe.ogg" id="9_t00g2"]
 
 [sub_resource type="Animation" id="Animation_6rnbk"]
 length = 0.001
@@ -240,15 +240,16 @@ pivot_offset = Vector2(840, 408)
 theme_override_constants/separation = 64
 
 [node name="AskButton" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(800, 400)
+custom_minimum_size = Vector2(800, 600)
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 flat = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/AskButton"]
 layout_mode = 2
 offset_right = 800.0
-offset_bottom = 816.0
+offset_bottom = 600.0
 mouse_filter = 2
 alignment = 1
 
