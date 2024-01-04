@@ -6,3 +6,4 @@
 script = ExtResource("1_tr4o1")
 id = "argentina"
 display_name = "Argentina"
+pronoun = 1

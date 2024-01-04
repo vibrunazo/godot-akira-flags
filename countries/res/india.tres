@@ -6,3 +6,4 @@
 script = ExtResource("1_nswoo")
 id = "india"
 display_name = "Índia"
+pronoun = 1

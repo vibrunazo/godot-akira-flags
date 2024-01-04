@@ -6,3 +6,4 @@
 script = ExtResource("1_c6xex")
 id = "china"
 display_name = "China"
+pronoun = 1

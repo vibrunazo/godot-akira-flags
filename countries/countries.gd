@@ -66,3 +66,20 @@ static func get_data(id: String) -> CountryData:
 	var path: String = "res://countries/res/%s.tres" % id
 	var res: CountryData = load(path)
 	return res
+
+## Returns the pronoun used to refer to the country of given id.
+static func get_pronoun(id: String) -> CountryData.PRONOUN:
+	if not ids.has(id): return CountryData.PRONOUN.MALE
+	var path: String = "res://countries/res/%s.tres" % id
+	var res: CountryData = load(path) as CountryData
+	return res.pronoun
+
+## Returns the AudioStream for the spoken audio of the PRONOUN of a given country id. Null if not found.
+static func get_pronoun_audio(id: String) -> AudioStream:
+	if not ids.has(id): return null
+	var pronoun: CountryData.PRONOUN = get_pronoun(id)
+	var path: String = "res://games/ballgame/audio/do.ogg"
+	if pronoun == CountryData.PRONOUN.FEMALE:
+		path = "res://games/ballgame/audio/da.ogg"
+	var res: AudioStream = load(path)
+	return res

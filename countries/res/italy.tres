@@ -6,3 +6,4 @@
 script = ExtResource("1_bpcoc")
 id = "italy"
 display_name = "Itália"
+pronoun = 1

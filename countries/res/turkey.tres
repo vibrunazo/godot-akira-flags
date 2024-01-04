@@ -6,3 +6,4 @@
 script = ExtResource("1_0dkgx")
 id = "turkey"
 display_name = "Turquia"
+pronoun = 1

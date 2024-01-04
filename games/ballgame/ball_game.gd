@@ -64,6 +64,7 @@ func _on_net_body_entered(body):
 		inc_team_score(body.team)
 		update_ui_score()
 		await audio_goal.finished
+		audio_from.stream = Countries.get_pronoun_audio(body.team)
 		audio_from.play()
 		await audio_from.finished
 		var stream := Countries.get_audio(body.team)

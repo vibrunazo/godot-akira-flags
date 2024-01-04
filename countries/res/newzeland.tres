@@ -6,3 +6,4 @@
 script = ExtResource("1_acqnb")
 id = "newzeland"
 display_name = "Nova Zelândia"
+pronoun = 1

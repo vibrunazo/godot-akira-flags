@@ -6,3 +6,4 @@
 script = ExtResource("1_vcooj")
 id = "somalia"
 display_name = "Somália"
+pronoun = 1

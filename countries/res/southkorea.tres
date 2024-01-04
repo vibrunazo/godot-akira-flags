@@ -6,3 +6,4 @@
 script = ExtResource("1_v7ad1")
 id = "southkorea"
 display_name = "Coréia do Sul"
+pronoun = 1

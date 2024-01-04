@@ -6,3 +6,4 @@
 script = ExtResource("1_yov4q")
 id = "malaysia"
 display_name = "Malásia"
+pronoun = 1

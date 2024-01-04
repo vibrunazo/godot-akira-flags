@@ -6,3 +6,4 @@
 script = ExtResource("1_sayca")
 id = "colombia"
 display_name = "Colômbia"
+pronoun = 1

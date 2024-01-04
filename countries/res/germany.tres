@@ -6,3 +6,4 @@
 script = ExtResource("1_kkosn")
 id = "germany"
 display_name = "Alemanha"
+pronoun = 1

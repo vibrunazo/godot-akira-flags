@@ -6,3 +6,4 @@
 script = ExtResource("1_j4fom")
 id = "hungary"
 display_name = "Hungria"
+pronoun = 1
