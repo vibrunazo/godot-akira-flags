@@ -1,5 +1,8 @@
 class_name PlayerBall extends RigidBody2D
 
+## id of the country this ball is teamed with
+@export var team: String = 'brazil'
+
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 

@@ -9,7 +9,9 @@ class_name BallGame extends GameMode
 ## Is cooldown ready to spawn push fields
 var is_spawn_ready := true
 ## Cooldown in seconds between new spawns
-var spawn_cooldown := 0.5
+var spawn_cooldown := 0.1
+# Score of each team
+var scores: Array[int] = [0, 0]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,4 +37,6 @@ func _on_net_body_entered(body):
 	if body is PlayerBall:
 		print('goal!')
 		audio_goal.play()
+		scores[0] += 1
+		%Score0.text = "%s" % scores[0]
 	pass # Replace with function body.

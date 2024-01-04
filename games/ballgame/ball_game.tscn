@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm7wx8vnwdxit"]
+[gd_scene load_steps=10 format=3 uid="uid://cm7wx8vnwdxit"]
 
 [ext_resource type="PackedScene" uid="uid://bwomel0weobus" path="res://games/ballgame/player_ball.tscn" id="1_4n2hc"]
 [ext_resource type="Script" path="res://games/ballgame/ball_game.gd" id="1_v850d"]
 [ext_resource type="PackedScene" uid="uid://ce0uocnomampc" path="res://ui/fade_button.tscn" id="2_tpmqb"]
 [ext_resource type="PackedScene" uid="uid://b6jiwqw1qjyc4" path="res://games/ballgame/wall.tscn" id="3_ec2oj"]
+[ext_resource type="PackedScene" uid="uid://c4x5m12ain5ot" path="res://games/ballgame/exit_area.tscn" id="5_0r3pj"]
 [ext_resource type="PackedScene" uid="uid://bbh3rgh1ltknx" path="res://games/ballgame/net.tscn" id="5_wxmyt"]
 [ext_resource type="AudioStream" uid="uid://b3gsh1mix6cod" path="res://games/ballgame/audio/goal.ogg" id="6_jcji7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdlu"]
+size = Vector2(800, 500)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4qg4i"]
 random_pitch = 1.2
@@ -31,9 +35,9 @@ rotation = 0.264749
 scale = Vector2(3.70176, 1)
 
 [node name="Wall3" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
-position = Vector2(910, 838)
-rotation = -0.403158
-scale = Vector2(3.70176, 1)
+position = Vector2(1280, 555)
+rotation = -0.470115
+scale = Vector2(2.10936, 1)
 
 [node name="Wall4" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(691, 286)
@@ -41,18 +45,32 @@ rotation = -0.451857
 scale = Vector2(3.70176, 1)
 
 [node name="Wall16" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
-position = Vector2(1319, 162)
-rotation = -0.451857
-scale = Vector2(3.70176, 1)
+position = Vector2(1381, 232)
+rotation = 0.599252
+scale = Vector2(2.29022, 1)
 
 [node name="Wall15" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
-position = Vector2(1725, 410)
+position = Vector2(1727, 806)
 scale = Vector2(2.54176, 1)
 
 [node name="Wall5" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(19, 242)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
+
+[node name="Wall8" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(-389, -586)
+rotation = 0.989611
+scale = Vector2(10.6218, 1)
+
+[node name="Wall17" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(2303, -594)
+rotation = -1.00256
+scale = Vector2(10.6218, 1)
+
+[node name="Wall18" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+position = Vector2(1039, -1174)
+scale = Vector2(30.2218, 1)
 
 [node name="Wall6" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(19, 712)
@@ -79,10 +97,6 @@ position = Vector2(1912, 1150)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall8" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
-position = Vector2(263, 1088)
-scale = Vector2(3.70176, 1)
-
 [node name="Wall9" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(731, 1088)
 scale = Vector2(3.70176, 1)
@@ -92,7 +106,8 @@ position = Vector2(1203, 1088)
 scale = Vector2(3.70176, 1)
 
 [node name="Wall11" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
-position = Vector2(1675, 1088)
+position = Vector2(1663, 1008)
+rotation = -0.369623
 scale = Vector2(3.70176, 1)
 
 [node name="balls" type="Node2D" parent="GameLayer"]
@@ -120,7 +135,16 @@ position = Vector2(326, 141)
 
 [node name="Net" parent="GameLayer" instance=ExtResource("5_wxmyt")]
 unique_name_in_owner = true
-position = Vector2(1788, 288)
+position = Vector2(1790, 684)
+
+[node name="ExitArea" parent="GameLayer" instance=ExtResource("5_0r3pj")]
+
+[node name="StartArea" type="Area2D" parent="GameLayer"]
+position = Vector2(996, -316)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameLayer/StartArea"]
+position = Vector2(3, 90)
+shape = SubResource("RectangleShape2D_2cdlu")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -133,6 +157,22 @@ offset_bottom = 197.0
 [node name="QuitButton" parent="UILayer/MarginContainer" instance=ExtResource("2_tpmqb")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Score0" type="Label" parent="UILayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.0
+offset_top = 68.0
+offset_right = 28.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.839216, 0.8, 0.0156863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 96
+text = "0"
 
 [node name="AudioGoal" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4qg4i")
