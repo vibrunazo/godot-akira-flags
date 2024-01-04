@@ -8,7 +8,6 @@ func _ready():
 
 
 func _on_body_entered(body):
-	print(body)
 	if body is PlayerBall:
 		body.global_position.y = -300
 	pass # Replace with function body.

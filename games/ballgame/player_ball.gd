@@ -2,13 +2,17 @@ class_name PlayerBall extends RigidBody2D
 
 ## id of the country this ball is teamed with
 @export var team: String = 'brazil'
+	#set(value):
+		#team = value
+		#update_country()
 
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var sprite_flag: Sprite2D = %SpriteFlag
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	update_country()
 
 func play_hit(vel):
 	if vel < 80: return
@@ -22,4 +26,7 @@ func play_hit(vel):
 func _on_body_entered(_body):
 	var vel: float = linear_velocity.length()
 	play_hit(vel)
+
+func update_country():
+	sprite_flag.texture = Countries.get_flag(team)
 	

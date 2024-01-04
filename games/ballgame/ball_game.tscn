@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cm7wx8vnwdxit"]
+[gd_scene load_steps=15 format=3 uid="uid://cm7wx8vnwdxit"]
 
 [ext_resource type="PackedScene" uid="uid://bwomel0weobus" path="res://games/ballgame/player_ball.tscn" id="1_4n2hc"]
 [ext_resource type="Script" path="res://games/ballgame/ball_game.gd" id="1_v850d"]
@@ -7,15 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://c4x5m12ain5ot" path="res://games/ballgame/exit_area.tscn" id="5_0r3pj"]
 [ext_resource type="PackedScene" uid="uid://bbh3rgh1ltknx" path="res://games/ballgame/net.tscn" id="5_wxmyt"]
 [ext_resource type="AudioStream" uid="uid://b3gsh1mix6cod" path="res://games/ballgame/audio/goal.ogg" id="6_jcji7"]
+[ext_resource type="AudioStream" uid="uid://cmfuvq6k221yk" path="res://games/ballgame/audio/do.ogg" id="7_2a1up"]
+[ext_resource type="Texture2D" uid="uid://d3sj0a0hks4my" path="res://countries/flags/brazil.png" id="7_fxvmj"]
+[ext_resource type="AudioStream" uid="uid://bl5xkv34oxtnf" path="res://countries/audio/brazil.ogg" id="8_iusns"]
+[ext_resource type="Texture2D" uid="uid://cjsrr11w28t0a" path="res://countries/flags/canada.png" id="8_tmihj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdlu"]
 size = Vector2(800, 500)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4qg4i"]
-random_pitch = 1.2
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7636b"]
+random_pitch = 1.1
 random_volume_offset_db = 5.0
 streams_count = 1
 stream_0/stream = ExtResource("6_jcji7")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4qg4i"]
+random_pitch = 1.08
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("7_2a1up")
 stream_0/weight = 1.0
 
 [node name="BallGame" type="Node2D"]
@@ -114,15 +125,15 @@ scale = Vector2(3.70176, 1)
 
 [node name="PlayerBall" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
 position = Vector2(423, -2)
+team = "canada"
 
 [node name="PlayerBall2" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
 position = Vector2(635, -2)
-
-[node name="PlayerBall3" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(528, 239)
+team = "canada"
 
 [node name="PlayerBall4" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
 position = Vector2(417, 212)
+team = "canada"
 
 [node name="PlayerBall5" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
 position = Vector2(639, 213)
@@ -158,24 +169,64 @@ offset_bottom = 197.0
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Score0" type="Label" parent="UILayer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -27.0
-offset_top = 68.0
-offset_right = 28.0
-offset_bottom = 200.0
+offset_left = -81.0
+offset_top = 69.0
+offset_right = 92.0
+offset_bottom = 201.0
 grow_horizontal = 2
+alignment = 1
+
+[node name="Score0" type="Label" parent="UILayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_colors/font_color = Color(0.839216, 0.8, 0.0156863, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 96
 text = "0"
 
+[node name="x" type="Label" parent="UILayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.839216, 0.8, 0.0156863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 96
+text = " x "
+
+[node name="Score1" type="Label" parent="UILayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.839216, 0.8, 0.0156863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 96
+text = "0"
+
+[node name="SpriteFlag0" type="Sprite2D" parent="UILayer/HBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(-171, 54)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_fxvmj")
+
+[node name="SpriteFlag1" type="Sprite2D" parent="UILayer/HBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(381, 54)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_tmihj")
+
 [node name="AudioGoal" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7636b")
+
+[node name="AudioFrom" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4qg4i")
+
+[node name="AudioCountry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_iusns")
 
 [connection signal="body_entered" from="GameLayer/Net" to="." method="_on_net_body_entered"]
 [connection signal="confirmed" from="UILayer/MarginContainer/QuitButton" to="." method="_on_quit_button_confirmed"]
