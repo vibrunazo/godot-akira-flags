@@ -6,14 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://b6jiwqw1qjyc4" path="res://games/ballgame/wall.tscn" id="3_ec2oj"]
 [ext_resource type="PackedScene" uid="uid://c4x5m12ain5ot" path="res://games/ballgame/exit_area.tscn" id="5_0r3pj"]
 [ext_resource type="PackedScene" uid="uid://bbh3rgh1ltknx" path="res://games/ballgame/net.tscn" id="5_wxmyt"]
+[ext_resource type="PackedScene" uid="uid://c4b15ebwpvtqj" path="res://games/ballgame/spawn_area.tscn" id="6_g82ym"]
 [ext_resource type="AudioStream" uid="uid://b3gsh1mix6cod" path="res://games/ballgame/audio/goal.ogg" id="6_jcji7"]
 [ext_resource type="AudioStream" uid="uid://cmfuvq6k221yk" path="res://games/ballgame/audio/do.ogg" id="7_2a1up"]
 [ext_resource type="Texture2D" uid="uid://d3sj0a0hks4my" path="res://countries/flags/brazil.png" id="7_fxvmj"]
 [ext_resource type="AudioStream" uid="uid://bl5xkv34oxtnf" path="res://countries/audio/brazil.ogg" id="8_iusns"]
 [ext_resource type="Texture2D" uid="uid://cjsrr11w28t0a" path="res://countries/flags/canada.png" id="8_tmihj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdlu"]
-size = Vector2(800, 500)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7636b"]
 random_pitch = 1.1
@@ -32,7 +30,7 @@ stream_0/weight = 1.0
 [node name="BallGame" type="Node2D"]
 script = ExtResource("1_v850d")
 
-[node name="GameLayer" type="CanvasLayer" parent="."]
+[node name="GameLayer" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="walls" type="Node2D" parent="GameLayer"]
@@ -148,14 +146,11 @@ position = Vector2(326, 141)
 unique_name_in_owner = true
 position = Vector2(1790, 684)
 
-[node name="ExitArea" parent="GameLayer" instance=ExtResource("5_0r3pj")]
+[node name="ExitArea" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+teleport_to = NodePath("../SpawnArea")
 
-[node name="StartArea" type="Area2D" parent="GameLayer"]
-position = Vector2(996, -316)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameLayer/StartArea"]
-position = Vector2(3, 90)
-shape = SubResource("RectangleShape2D_2cdlu")
+[node name="SpawnArea" parent="GameLayer" instance=ExtResource("6_g82ym")]
+position = Vector2(691, -352)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

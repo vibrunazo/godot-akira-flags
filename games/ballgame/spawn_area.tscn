@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4b15ebwpvtqj"]
+
+[ext_resource type="Script" path="res://games/ballgame/spawn_area.gd" id="1_28mw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdlu"]
+size = Vector2(800, 500)
+
+[node name="SpawnArea" type="Area2D"]
+position = Vector2(996, -316)
+script = ExtResource("1_28mw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, 90)
+shape = SubResource("RectangleShape2D_2cdlu")

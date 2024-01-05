@@ -4,7 +4,7 @@ class_name BallGame extends GameMode
 ## Array of team ids
 @export var teams: Array[String] = ['uk', 'uruguay']
 
-@onready var game_layer: CanvasLayer = %GameLayer
+@onready var game_layer: Node = %GameLayer
 @onready var net: Area2D = %Net
 @onready var audio_goal: AudioStreamPlayer = $AudioGoal
 @onready var audio_from: AudioStreamPlayer = $AudioFrom
@@ -27,6 +27,7 @@ var scores: Array[int] = [0, 0]
 func _ready():
 	pick_teams()
 	update_flags()
+	#(%Camera2D as Camera2D)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -71,8 +72,6 @@ func _on_net_body_entered(body):
 		audio_country.stream = stream
 		audio_country.play()
 		
-	pass # Replace with function body.
-
 ## Sets the score for given country id
 func set_score_for_team(id: String, new_score: int):
 	var index: int = teams.find(id)
