@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cm7wx8vnwdxit"]
+[gd_scene load_steps=19 format=3 uid="uid://cm7wx8vnwdxit"]
 
 [ext_resource type="Script" path="res://games/ballgame/ball_game.gd" id="1_v850d"]
 [ext_resource type="PackedScene" uid="uid://ce0uocnomampc" path="res://ui/fade_button.tscn" id="2_tpmqb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cjsrr11w28t0a" path="res://countries/flags/canada.png" id="8_tmihj"]
 [ext_resource type="AudioStream" uid="uid://brnvuxdo47fh8" path="res://games/ballgame/audio/endgame.ogg" id="9_n0wur"]
 [ext_resource type="AudioStream" uid="uid://cuim0rnlgu7hm" path="res://games/ballgame/audio/win.ogg" id="13_r2l7v"]
+[ext_resource type="PackedScene" uid="uid://3kkfldypeswj" path="res://games/ballgame/gamecam.tscn" id="14_ivv2q"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_diqo6"]
 random_pitch = 1.1
@@ -43,9 +44,11 @@ stream_0/stream = ExtResource("13_r2l7v")
 stream_0/weight = 1.0
 
 [node name="BallGame" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_v850d")
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="GameRoot" type="Control" parent="GameLayer"]
 unique_name_in_owner = true
@@ -182,6 +185,7 @@ unique_name_in_owner = true
 position = Vector2(691, -352)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer"]
 offset_left = 69.0
@@ -269,22 +273,31 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="AudioGoal" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_diqo6")
 
 [node name="AudioFrom" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_4qg4i")
 
 [node name="AudioCountry" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_iusns")
 
 [node name="AudioEndGame" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_7636b")
 
 [node name="AudioResult" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_epati")
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 1
 autostart = true
+
+[node name="GameCam" parent="." instance=ExtResource("14_ivv2q")]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="GameLayer/GameRoot/Net" to="." method="_on_net_body_entered"]
 [connection signal="confirmed" from="UILayer/MarginContainer/QuitButton" to="." method="_on_quit_button_confirmed"]

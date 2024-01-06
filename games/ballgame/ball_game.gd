@@ -22,6 +22,7 @@ class_name BallGame extends GameMode
 @onready var sprite_flag1: Sprite2D = %SpriteFlag1
 @onready var balls_layer: Node2D = %balls
 @onready var spawn_area: SpawnArea = %SpawnArea
+@onready var gamecam: GameCam = %GameCam
 
 ## Is the game in a playable state. If false, the game is over
 var is_ready := true
@@ -121,25 +122,36 @@ func stop_audio():
 	audio_from.stop()
 	audio_goal.stop()
 
+## Body entered the net. Could be a ball, if so, scores a goal.
 func _on_net_body_entered(body):
 	if not is_ready: return
 	if body is PlayerBall:
-		var team: String = body.team
-		print('goal!')
-		body.global_position.x = 0
-		body.global_position.y = -300
-		
-		stop_audio()
-		audio_goal.play()
-		inc_team_score(team)
-		update_ui_score()
-		await audio_goal.finished
-		audio_from.stream = Countries.get_pronoun_audio(team)
-		audio_from.play()
-		await audio_from.finished
-		var stream := Countries.get_audio(team)
-		audio_country.stream = stream
-		audio_country.play()
+		goal(body)
+
+## Given ball just scored a goal
+func goal(body: PlayerBall):
+	var team: String = body.team
+	print('goal!')
+	get_tree().paused = true
+	gamecam.focus_target(body.global_position)
+	
+	
+	stop_audio()
+	audio_goal.play()
+	inc_team_score(team)
+	update_ui_score()
+	await audio_goal.finished
+	audio_from.stream = Countries.get_pronoun_audio(team)
+	audio_from.play()
+	await audio_from.finished
+	var stream := Countries.get_audio(team)
+	audio_country.stream = stream
+	audio_country.play()
+	await audio_country.finished
+	body.global_position.x = 0
+	body.global_position.y = -300
+	gamecam.reset()
+	get_tree().paused = false
 		
 ## Sets the score for given country id
 func set_score_for_team(id: String, new_score: int):
