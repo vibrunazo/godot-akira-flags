@@ -13,6 +13,8 @@ class_name BallGame extends GameMode
 @onready var audio_goal: AudioStreamPlayer = $AudioGoal
 @onready var audio_from: AudioStreamPlayer = $AudioFrom
 @onready var audio_country: AudioStreamPlayer = $AudioCountry
+@onready var audio_end: AudioStreamPlayer = $AudioEndGame
+@onready var audio_result: AudioStreamPlayer = $AudioResult
 @onready var label_score0: Label = %Score0
 @onready var label_score1: Label = %Score1
 @onready var label_time: Label = %LabelTime
@@ -67,7 +69,6 @@ func spawn_balls():
 
 ## Spawns a single ball for a given team
 func spawn_ball(team_id: String):
-	print('spawn ball %s' % team_id)
 	var ball_scene := load("res://games/ballgame/player_ball.tscn") as PackedScene
 	var ball := ball_scene.instantiate() as PlayerBall
 	ball.team = team_id
@@ -189,6 +190,26 @@ func update_ui_time():
 func end():
 	if not is_ready: return
 	is_ready = false
+	var winner := get_winner()
+	await get_tree().create_timer(1.2).timeout
+	stop_audio()
+	audio_end.play()
+	await audio_end.finished
+	if winner == '': 
+		audio_result.stream = load("res://games/ballgame/audio/draw.ogg")
+	else: 
+		audio_country.stream = Countries.get_audio(winner)
+		audio_result.stream = load("res://games/ballgame/audio/win.ogg")
+		audio_country.play()
+		await audio_country.finished
+	audio_result.play()
+	await audio_result.finished
 	await get_tree().create_timer(2).timeout
 	print('game over, restarting')
 	re_start()
+
+## returns the id of the winning team, or '' if draw
+func get_winner() -> String:
+	if scores[0] > scores[1]: return teams[0]
+	if scores[1] > scores[0]: return teams[1]
+	return ''
