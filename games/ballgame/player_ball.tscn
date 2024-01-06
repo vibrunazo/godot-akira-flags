@@ -41,7 +41,6 @@ texture = ExtResource("1_57puk")
 
 [node name="SpriteFlag2" type="Sprite2D" parent="SpriteRoot/SpriteCircle"]
 unique_name_in_owner = true
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_d0bg5")
 
 [node name="SpriteFlag" type="Sprite2D" parent="SpriteRoot/SpriteCircle"]
@@ -50,7 +49,7 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_d0bg5")
 
 [node name="SpriteShading" type="Sprite2D" parent="SpriteRoot/SpriteCircle"]
-self_modulate = Color(1, 1, 1, 0.823529)
+unique_name_in_owner = true
 scale = Vector2(1.01, 1.01)
 texture = ExtResource("3_67wng")
 

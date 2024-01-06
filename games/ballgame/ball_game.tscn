@@ -147,6 +147,25 @@ unique_name_in_owner = true
 position = Vector2(1790, 684)
 
 [node name="ExitArea" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+position = Vector2(996, 1568)
+scale = Vector2(2.75471, 4.00289)
+teleport_to = NodePath("../SpawnArea")
+
+[node name="ExitArea2" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+position = Vector2(1080, -2512)
+scale = Vector2(2.75471, 4.64289)
+teleport_to = NodePath("../SpawnArea")
+
+[node name="ExitArea3" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+position = Vector2(-2551, -99)
+rotation = 1.57079
+scale = Vector2(2.75471, 4.64289)
+teleport_to = NodePath("../SpawnArea")
+
+[node name="ExitArea4" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+position = Vector2(5394, -104)
+rotation = 1.57079
+scale = Vector2(2.75471, 4.64289)
 teleport_to = NodePath("../SpawnArea")
 
 [node name="SpawnArea" parent="GameLayer" instance=ExtResource("6_g82ym")]
@@ -175,6 +194,16 @@ offset_bottom = 201.0
 grow_horizontal = 2
 alignment = 1
 
+[node name="Control" type="Control" parent="UILayer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="SpriteFlag0" type="Sprite2D" parent="UILayer/HBoxContainer/Control"]
+unique_name_in_owner = true
+position = Vector2(90, 60)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_fxvmj")
+
 [node name="Score0" type="Label" parent="UILayer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -202,15 +231,13 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 96
 text = "0"
 
-[node name="SpriteFlag0" type="Sprite2D" parent="UILayer/HBoxContainer"]
-unique_name_in_owner = true
-position = Vector2(-171, 54)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_fxvmj")
+[node name="Control2" type="Control" parent="UILayer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
 
-[node name="SpriteFlag1" type="Sprite2D" parent="UILayer/HBoxContainer"]
+[node name="SpriteFlag1" type="Sprite2D" parent="UILayer/HBoxContainer/Control2"]
 unique_name_in_owner = true
-position = Vector2(381, 54)
+position = Vector2(110, 60)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_tmihj")
 

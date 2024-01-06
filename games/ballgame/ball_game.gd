@@ -21,6 +21,10 @@ var is_spawn_ready := true
 var spawn_cooldown := 0.1
 ## Score of each team
 var scores: Array[int] = [0, 0]
+## If mouse has being held down
+var is_mouse_down: bool = false
+## Ball that gets dragged by the mouse
+var drag_ball: DragBall
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,18 +32,35 @@ func _ready():
 	pick_teams()
 	update_flags()
 	#(%Camera2D as Camera2D)
+#
+#func _physics_process(_delta):
+	#if is_mouse_down and drag_ball:
+		#drag_ball.global_position = get_global_mouse_position()
+		#drag_ball.move_and_collide()
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton and event.is_pressed():
-		if not is_spawn_ready: return
-		spawn_push(get_global_mouse_position())
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			is_mouse_down = true
+			if not drag_ball:
+				spawn_drag_ball()
+			
+			if not is_spawn_ready: return
+			spawn_push(get_global_mouse_position())
+		if event.is_released():
+			is_mouse_down = false
+			if drag_ball:
+				drag_ball.queue_free()
+				drag_ball = null
 
+## picks random teams to play the game
 func pick_teams():
 	var ids: = Countries.ids.duplicate()
 	ids.shuffle()
 	teams[0] = ids.pop_front()
 	teams[1] = ids.pop_front()
 
+## Spawns the force field that pushes balls away
 func spawn_push(pos: Vector2):
 	var field := load("res://games/ballgame/push_field.tscn").instantiate() as Node2D
 	field.global_position = pos
@@ -47,6 +68,13 @@ func spawn_push(pos: Vector2):
 	is_spawn_ready = false
 	await get_tree().create_timer(spawn_cooldown).timeout
 	is_spawn_ready = true
+
+## Spawns the DragBall that gets dragged with the mouse and assign it to [member drag_ball]
+func spawn_drag_ball():
+	var ball := load("res://games/ballgame/drag_ball.tscn").instantiate() as Node2D
+	game_layer.add_child(ball)
+	drag_ball = ball
+	drag_ball.global_position = get_global_mouse_position()
 	
 ## Stops all audio from playing to avoid interruption
 func stop_audio():
@@ -86,10 +114,12 @@ func get_score_for_team(id: String) -> int:
 func inc_team_score(id: String, inc: int = 1):
 	set_score_for_team(id, get_score_for_team(id) + inc)
 	
+## Updates UI Labels with current score
 func update_ui_score():
 	label_score0.text = "%s" % scores[0]
 	label_score1.text = "%s" % scores[1]
 
+## Update texture of UI score flag sprites with current team countries
 func update_flags():
 	sprite_flag0.texture = Countries.get_flag(teams[0])
 	sprite_flag1.texture = Countries.get_flag(teams[1])

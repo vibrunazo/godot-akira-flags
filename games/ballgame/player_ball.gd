@@ -9,11 +9,15 @@ class_name PlayerBall extends RigidBody2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_flag: Sprite2D = %SpriteFlag
 @onready var sprite_flag2: Sprite2D = %SpriteFlag2
+@onready var sprite_shading: Sprite2D = %SpriteShading
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_country()
+
+func _process(_delta):
+	sprite_shading.global_rotation = 0
 
 func play_hit(vel):
 	if vel < 80: return
