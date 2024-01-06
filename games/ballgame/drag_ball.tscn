@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1gtqvuutmcmn"]
+[gd_scene load_steps=6 format=3 uid="uid://b1gtqvuutmcmn"]
 
 [ext_resource type="Script" path="res://games/ballgame/drag_ball.gd" id="1_uqpte"]
 [ext_resource type="Texture2D" uid="uid://cufdde0eal0sd" path="res://icon.svg" id="2_c66dq"]
+[ext_resource type="PackedScene" uid="uid://xqu85qhwxrwx" path="res://games/ballgame/explosion_fx.tscn" id="2_kljt4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f51f6"]
 radius = 40.0
@@ -17,6 +18,7 @@ freeze = true
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_uqpte")
+fx_scene = ExtResource("2_kljt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f51f6")
@@ -33,4 +35,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_m4gsp")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
