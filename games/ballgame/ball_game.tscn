@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cm7wx8vnwdxit"]
+[gd_scene load_steps=22 format=3 uid="uid://cm7wx8vnwdxit"]
 
 [ext_resource type="Script" path="res://games/ballgame/ball_game.gd" id="1_v850d"]
 [ext_resource type="PackedScene" uid="uid://ce0uocnomampc" path="res://ui/fade_button.tscn" id="2_tpmqb"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://brnvuxdo47fh8" path="res://games/ballgame/audio/endgame.ogg" id="9_n0wur"]
 [ext_resource type="AudioStream" uid="uid://cuim0rnlgu7hm" path="res://games/ballgame/audio/win.ogg" id="13_r2l7v"]
 [ext_resource type="PackedScene" uid="uid://3kkfldypeswj" path="res://games/ballgame/gamecam.tscn" id="14_ivv2q"]
+[ext_resource type="AudioStream" uid="uid://dxubwosd6y0df" path="res://games/ballgame/audio/numbers/one.ogg" id="14_yxlb1"]
+[ext_resource type="AudioStream" uid="uid://byeqwdg1nq6c5" path="res://games/ballgame/audio/a.ogg" id="15_eio4j"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_diqo6"]
 random_pitch = 1.1
@@ -41,6 +43,13 @@ random_pitch = 1.1
 random_volume_offset_db = 5.0
 streams_count = 1
 stream_0/stream = ExtResource("13_r2l7v")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3m1xo"]
+random_pitch = 1.1
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("15_eio4j")
 stream_0/weight = 1.0
 
 [node name="BallGame" type="Node2D"]
@@ -291,6 +300,12 @@ stream = SubResource("AudioStreamRandomizer_7636b")
 [node name="AudioResult" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_epati")
+
+[node name="AudioNumber" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_yxlb1")
+
+[node name="AudioA" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3m1xo")
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 1

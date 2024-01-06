@@ -46,6 +46,20 @@ static var ids = [
 	'wales',
 ]
 
+static var numbers: Array[String] = [
+	"res://games/ballgame/audio/numbers/zero.ogg",
+	"res://games/ballgame/audio/numbers/one.ogg",
+	"res://games/ballgame/audio/numbers/two.ogg",
+	"res://games/ballgame/audio/numbers/three.ogg",
+	"res://games/ballgame/audio/numbers/four.ogg",
+	"res://games/ballgame/audio/numbers/five.ogg",
+	"res://games/ballgame/audio/numbers/six.ogg",
+	"res://games/ballgame/audio/numbers/seven.ogg",
+	"res://games/ballgame/audio/numbers/eigth.ogg",
+	"res://games/ballgame/audio/numbers/nine.ogg",
+	
+]
+
 ## Returns the Texture2D for the flag of a given country id. Null if not found.
 static func get_flag(id: String) -> Texture2D:
 	if not ids.has(id): return null
@@ -81,5 +95,13 @@ static func get_pronoun_audio(id: String) -> AudioStream:
 	var path: String = "res://games/ballgame/audio/do.ogg"
 	if pronoun == CountryData.PRONOUN.FEMALE:
 		path = "res://games/ballgame/audio/da.ogg"
+	var res: AudioStream = load(path)
+	return res
+
+
+## Returns the AudioStream given number. Null if not found
+static func get_number_audio(number: int) -> AudioStream:
+	if number > numbers.size(): return null
+	var path: String = numbers[number]
 	var res: AudioStream = load(path)
 	return res

@@ -15,6 +15,8 @@ class_name BallGame extends GameMode
 @onready var audio_country: AudioStreamPlayer = $AudioCountry
 @onready var audio_end: AudioStreamPlayer = $AudioEndGame
 @onready var audio_result: AudioStreamPlayer = $AudioResult
+@onready var audio_number: AudioStreamPlayer = $AudioNumber
+@onready var audio_a: AudioStreamPlayer = $AudioA
 @onready var label_score0: Label = %Score0
 @onready var label_score1: Label = %Score1
 @onready var label_time: Label = %LabelTime
@@ -121,6 +123,8 @@ func stop_audio():
 	audio_country.stop()
 	audio_from.stop()
 	audio_goal.stop()
+	audio_a.stop()
+	audio_number.stop()
 
 ## Body entered the net. Could be a ball, if so, scores a goal.
 func _on_net_body_entered(body):
@@ -134,7 +138,6 @@ func goal(body: PlayerBall):
 	print('goal!')
 	get_tree().paused = true
 	gamecam.focus_target(body.global_position)
-	
 	
 	stop_audio()
 	audio_goal.play()
@@ -152,6 +155,18 @@ func goal(body: PlayerBall):
 	body.global_position.y = -300
 	gamecam.reset()
 	get_tree().paused = false
+	play_announce_score()
+
+## Plays anim and audio for announcing the current score
+func play_announce_score():
+	stop_audio()
+	audio_number.stream = Countries.get_number_audio(scores[0])
+	audio_number.play()
+	await audio_number.finished
+	audio_a.play()
+	await audio_a.finished
+	audio_number.stream = Countries.get_number_audio(scores[1])
+	audio_number.play()
 		
 ## Sets the score for given country id
 func set_score_for_team(id: String, new_score: int):
@@ -199,6 +214,7 @@ func _on_timer_timeout():
 func update_ui_time():
 	label_time.text = "%s" % round(time)
 
+## Game is over, play end game anims and resets
 func end():
 	if not is_ready: return
 	is_ready = false
