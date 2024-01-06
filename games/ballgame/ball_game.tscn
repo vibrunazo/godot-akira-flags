@@ -45,124 +45,139 @@ stream_0/weight = 1.0
 [node name="BallGame" type="Node2D"]
 script = ExtResource("1_v850d")
 
-[node name="GameLayer" type="Node" parent="."]
+[node name="GameLayer" type="CanvasLayer" parent="."]
+
+[node name="GameRoot" type="Control" parent="GameLayer"]
 unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="walls" type="Node2D" parent="GameLayer"]
+[node name="walls" type="Node2D" parent="GameLayer/GameRoot"]
 
-[node name="Wall" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(164, 594)
 
-[node name="Wall2" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall2" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(467, 658)
 rotation = 0.264749
 scale = Vector2(3.70176, 1)
 
-[node name="Wall3" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall3" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1280, 555)
 rotation = -0.470115
 scale = Vector2(2.10936, 1)
 
-[node name="Wall4" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall4" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(691, 286)
 rotation = -0.451857
 scale = Vector2(3.70176, 1)
 
-[node name="Wall16" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall16" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1381, 232)
 rotation = 0.599252
 scale = Vector2(2.29022, 1)
 
-[node name="Wall15" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall15" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1727, 806)
 scale = Vector2(2.54176, 1)
 
-[node name="Wall5" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall5" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(19, 242)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall8" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall8" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(-389, -586)
 rotation = 0.989611
 scale = Vector2(10.6218, 1)
 
-[node name="Wall17" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall17" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(2303, -594)
 rotation = -1.00256
 scale = Vector2(10.6218, 1)
 
-[node name="Wall18" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall18" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1039, -1174)
 scale = Vector2(30.2218, 1)
 
-[node name="Wall6" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall6" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(19, 712)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall7" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall7" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(19, 1180)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall12" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall12" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1912, 212)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall13" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall13" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1912, 682)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall14" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall14" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1912, 1150)
 rotation = -1.5708
 scale = Vector2(3.70176, 1)
 
-[node name="Wall9" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall9" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(731, 1088)
 scale = Vector2(3.70176, 1)
 
-[node name="Wall10" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall10" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1203, 1088)
 scale = Vector2(3.70176, 1)
 
-[node name="Wall11" parent="GameLayer/walls" instance=ExtResource("3_ec2oj")]
+[node name="Wall11" parent="GameLayer/GameRoot/walls" instance=ExtResource("3_ec2oj")]
 position = Vector2(1663, 1008)
 rotation = -0.369623
 scale = Vector2(3.70176, 1)
 
-[node name="balls" type="Node2D" parent="GameLayer"]
+[node name="balls" type="Node2D" parent="GameLayer/GameRoot"]
+unique_name_in_owner = true
 
-[node name="Net" parent="GameLayer" instance=ExtResource("5_wxmyt")]
+[node name="Net" parent="GameLayer/GameRoot" instance=ExtResource("5_wxmyt")]
 unique_name_in_owner = true
 position = Vector2(1790, 684)
 
-[node name="ExitArea" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+[node name="ExitArea" parent="GameLayer/GameRoot" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
 position = Vector2(996, 1568)
 scale = Vector2(2.75471, 4.00289)
 teleport_to = NodePath("../SpawnArea")
 
-[node name="ExitArea2" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+[node name="ExitArea2" parent="GameLayer/GameRoot" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
 position = Vector2(1080, -2512)
 scale = Vector2(2.75471, 4.64289)
 teleport_to = NodePath("../SpawnArea")
 
-[node name="ExitArea3" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+[node name="ExitArea3" parent="GameLayer/GameRoot" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
 position = Vector2(-2551, -99)
 rotation = 1.57079
 scale = Vector2(2.75471, 4.64289)
 teleport_to = NodePath("../SpawnArea")
 
-[node name="ExitArea4" parent="GameLayer" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
+[node name="ExitArea4" parent="GameLayer/GameRoot" node_paths=PackedStringArray("teleport_to") instance=ExtResource("5_0r3pj")]
 position = Vector2(5394, -104)
 rotation = 1.57079
 scale = Vector2(2.75471, 4.64289)
 teleport_to = NodePath("../SpawnArea")
 
-[node name="SpawnArea" parent="GameLayer" instance=ExtResource("6_g82ym")]
+[node name="SpawnArea" parent="GameLayer/GameRoot" instance=ExtResource("6_g82ym")]
 unique_name_in_owner = true
 position = Vector2(691, -352)
 
@@ -238,15 +253,20 @@ texture = ExtResource("8_tmihj")
 
 [node name="LabelTime" type="Label" parent="UILayer"]
 unique_name_in_owner = true
-offset_left = 1655.0
-offset_top = 77.0
-offset_right = 1758.0
-offset_bottom = 209.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -217.0
+offset_top = 60.0
+offset_right = -114.0
+offset_bottom = 192.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0.839216, 0.8, 0.0156863, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 96
 text = "0"
+horizontal_alignment = 2
 
 [node name="AudioGoal" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_diqo6")
@@ -266,6 +286,6 @@ stream = SubResource("AudioStreamRandomizer_epati")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="body_entered" from="GameLayer/Net" to="." method="_on_net_body_entered"]
+[connection signal="body_entered" from="GameLayer/GameRoot/Net" to="." method="_on_net_body_entered"]
 [connection signal="confirmed" from="UILayer/MarginContainer/QuitButton" to="." method="_on_quit_button_confirmed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

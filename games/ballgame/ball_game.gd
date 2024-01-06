@@ -8,7 +8,7 @@ class_name BallGame extends GameMode
 ## Time in seconds the match lasts
 @export var max_time: float = 45
 
-@onready var game_layer: Node = %GameLayer
+@onready var game_root: Node = %GameRoot
 @onready var net: Area2D = %Net
 @onready var audio_goal: AudioStreamPlayer = $AudioGoal
 @onready var audio_from: AudioStreamPlayer = $AudioFrom
@@ -20,7 +20,7 @@ class_name BallGame extends GameMode
 @onready var label_time: Label = %LabelTime
 @onready var sprite_flag0: Sprite2D = %SpriteFlag0
 @onready var sprite_flag1: Sprite2D = %SpriteFlag1
-@onready var balls_layer: Node2D = $GameLayer/balls
+@onready var balls_layer: Node2D = %balls
 @onready var spawn_area: SpawnArea = %SpawnArea
 
 ## Is the game in a playable state. If false, the game is over
@@ -102,7 +102,7 @@ func spawn_push(pos: Vector2):
 	if not is_ready: return
 	var field := load("res://games/ballgame/push_field.tscn").instantiate() as Node2D
 	field.global_position = pos
-	game_layer.add_child(field)
+	game_root.add_child(field)
 	is_spawn_ready = false
 	await get_tree().create_timer(spawn_cooldown).timeout
 	is_spawn_ready = true
@@ -111,7 +111,7 @@ func spawn_push(pos: Vector2):
 func spawn_drag_ball():
 	if not is_ready: return
 	var ball := load("res://games/ballgame/drag_ball.tscn").instantiate() as Node2D
-	game_layer.add_child(ball)
+	game_root.add_child(ball)
 	drag_ball = ball
 	drag_ball.global_position = get_global_mouse_position()
 	
