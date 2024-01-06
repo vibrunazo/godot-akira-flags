@@ -2,10 +2,7 @@ class_name SpawnArea extends Area2D
 
 @onready var collision: CollisionShape2D = %CollisionShape2D
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-	#pass
-
+## Returns a random point inside the SpawnArea in global coordinates
 func get_random_point() -> Vector2:
 	var shape: RectangleShape2D = collision.shape as RectangleShape2D
 	var x1 := -shape.size.x / 2

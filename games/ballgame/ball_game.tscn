@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://cm7wx8vnwdxit"]
+[gd_scene load_steps=14 format=3 uid="uid://cm7wx8vnwdxit"]
 
-[ext_resource type="PackedScene" uid="uid://bwomel0weobus" path="res://games/ballgame/player_ball.tscn" id="1_4n2hc"]
 [ext_resource type="Script" path="res://games/ballgame/ball_game.gd" id="1_v850d"]
 [ext_resource type="PackedScene" uid="uid://ce0uocnomampc" path="res://ui/fade_button.tscn" id="2_tpmqb"]
 [ext_resource type="PackedScene" uid="uid://b6jiwqw1qjyc4" path="res://games/ballgame/wall.tscn" id="3_ec2oj"]
@@ -121,27 +120,6 @@ scale = Vector2(3.70176, 1)
 
 [node name="balls" type="Node2D" parent="GameLayer"]
 
-[node name="PlayerBall" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(423, -2)
-team = "canada"
-
-[node name="PlayerBall2" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(635, -2)
-team = "canada"
-
-[node name="PlayerBall4" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(417, 212)
-team = "canada"
-
-[node name="PlayerBall5" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(639, 213)
-
-[node name="PlayerBall6" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(731, 152)
-
-[node name="PlayerBall7" parent="GameLayer/balls" instance=ExtResource("1_4n2hc")]
-position = Vector2(326, 141)
-
 [node name="Net" parent="GameLayer" instance=ExtResource("5_wxmyt")]
 unique_name_in_owner = true
 position = Vector2(1790, 684)
@@ -169,6 +147,7 @@ scale = Vector2(2.75471, 4.64289)
 teleport_to = NodePath("../SpawnArea")
 
 [node name="SpawnArea" parent="GameLayer" instance=ExtResource("6_g82ym")]
+unique_name_in_owner = true
 position = Vector2(691, -352)
 
 [node name="UILayer" type="CanvasLayer" parent="."]
@@ -241,6 +220,18 @@ position = Vector2(110, 60)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_tmihj")
 
+[node name="LabelTime" type="Label" parent="UILayer"]
+unique_name_in_owner = true
+offset_left = 1655.0
+offset_top = 77.0
+offset_right = 1758.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.839216, 0.8, 0.0156863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 96
+text = "0"
+
 [node name="AudioGoal" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7636b")
 
@@ -250,5 +241,9 @@ stream = SubResource("AudioStreamRandomizer_4qg4i")
 [node name="AudioCountry" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_iusns")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="GameLayer/Net" to="." method="_on_net_body_entered"]
 [connection signal="confirmed" from="UILayer/MarginContainer/QuitButton" to="." method="_on_quit_button_confirmed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

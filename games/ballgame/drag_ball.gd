@@ -29,7 +29,6 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_timer_timeout():
-	print('moo')
 	var fx: GPUParticles2D = fx_scene.instantiate() as GPUParticles2D
 	fx.amount_ratio = 0.2
 	fx.global_position = global_position
