@@ -159,13 +159,15 @@ func goal(body: PlayerBall):
 
 ## Plays anim and audio for announcing the current score
 func play_announce_score():
+	var first_score: int = max(scores[0], scores[1])
+	var second_score: int = min(scores[0], scores[1])
 	stop_audio()
-	audio_number.stream = Countries.get_number_audio(scores[0])
+	audio_number.stream = Countries.get_number_audio(first_score)
 	audio_number.play()
 	await audio_number.finished
 	audio_a.play()
 	await audio_a.finished
-	audio_number.stream = Countries.get_number_audio(scores[1])
+	audio_number.stream = Countries.get_number_audio(second_score)
 	audio_number.play()
 		
 ## Sets the score for given country id
