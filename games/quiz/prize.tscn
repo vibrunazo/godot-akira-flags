@@ -1,32 +1,33 @@
 [gd_scene load_steps=17 format=3 uid="uid://hr2k3bq6l1wq"]
 
 [ext_resource type="Script" path="res://games/quiz/prize.gd" id="1_k2x5y"]
+[ext_resource type="Shader" uid="uid://csi4euyue3567" path="res://games/quiz/progress_shader.tres" id="2_bi03j"]
 [ext_resource type="Texture2D" uid="uid://c6q7fseky532m" path="res://games/quiz/sprite/cookie.png" id="2_wc6g5"]
 [ext_resource type="AudioStream" uid="uid://p4oueeupilsc" path="res://games/quiz/audio/crunch.1.ogg" id="3_vom8v"]
 [ext_resource type="Texture2D" uid="uid://cduplxg87ofjn" path="res://games/quiz/sprite/cookie-particles.png" id="4_dssau"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tdtc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyg7t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7mdi"]
+shader = ExtResource("2_bi03j")
+shader_parameter/progress = 1.0
 
 [sub_resource type="Animation" id="Animation_vq1tk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:value")
+tracks/0/path = NodePath("GPUParticles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [100.0]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/path = NodePath("GPUParticles2D2:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GPUParticles2D2:emitting")
+tracks/2/path = NodePath("GPUParticles2D3:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -50,14 +51,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GPUParticles2D3:emitting")
+tracks/3/path = NodePath("Sprite2D:material:shader_parameter/progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_512x4"]
@@ -71,25 +72,13 @@ stream_0/weight = 1.0
 resource_name = "eat"
 length = 1.2
 step = 0.05
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ProgressBar:value")
-tracks/0/interp = 0
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.45, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [100.0, 80.0, 40.0, 1.0]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "clips": [{
 "end_offset": 0.447365,
 "start_offset": 0.551135,
@@ -101,14 +90,14 @@ tracks/1/keys = {
 }],
 "times": PackedFloat32Array(0.1, 0.75)
 }
-tracks/1/use_blend = true
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.538451,
@@ -116,15 +105,27 @@ tracks/2/keys = {
 }],
 "times": PackedFloat32Array(0.4)
 }
-tracks/2/use_blend = true
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/path = NodePath("GPUParticles2D2:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0.45),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -132,11 +133,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GPUParticles2D2:emitting")
+tracks/4/path = NodePath("GPUParticles2D3:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.45),
+"times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -144,14 +145,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("GPUParticles2D3:emitting")
+tracks/5/path = NodePath("Sprite2D:material:shader_parameter/progress")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15, 0.45, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [1.0, 0.7, 0.4, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7br4s"]
@@ -204,29 +205,9 @@ anim_offset_max = 1.0
 [node name="Prize" type="Node2D"]
 script = ExtResource("1_k2x5y")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-clip_children = 1
-custom_minimum_size = Vector2(250, 220)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -110.0
-offset_right = 125.0
-offset_bottom = 110.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_0tdtc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jyg7t")
-value = 100.0
-rounded = true
-fill_mode = 3
-show_percentage = false
-
-[node name="Sprite2D" type="Sprite2D" parent="ProgressBar"]
-position = Vector2(125, 100)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_j7mdi")
+position = Vector2(0, -10)
 texture = ExtResource("2_wc6g5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
